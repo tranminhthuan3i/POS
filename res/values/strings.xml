@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">POS</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <!-- User String -->
+	<string name="username">User Name \u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020  </string>
+    <string name="invoicecode">Invoice Code \u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020  </string>
+    <string name="invoicetimein">Time In    \u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020  </string>
+    <string name="invoicetimeout">Time Out   \u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020  </string>
+    
+    <string name="titleinvoice">REPORT LIST OF ITEMS</string>
+</resources>
