@@ -12,67 +12,65 @@
         android:id="@+id/menuMap"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="85"
+        android:layout_weight="90"
         android:background="@android:color/darker_gray"
         android:orientation="vertical" >
 
         <Button
-            android:id="@+id/reportanissuebutton"
-            android:layout_width="match_parent"
-            android:layout_height="32dip"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="40sp"
+           android:id="@+id/btnFloor1"
+           android:layout_marginTop="10dip"
+            android:layout_width="76dp"
+            android:layout_height="45dip"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dip"
             android:background="@drawable/buttonbackground"
-            android:text="fdafa"
-            android:textColor="#fff"
-            android:textSize="18dip" />
-
-        <Button
-            android:id="@+id/btnInvoice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginBottom="-4dip"
-            android:background="@drawable/buttonbackground"
-            android:drawableLeft="@drawable/menu_icon_invoice"
             android:minWidth="100sp"
             android:onClick="menuButtonClick"
-            android:text="@string/invoice_menu"
+            android:text="  Floor1  "
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/btnSetting"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginBottom="-4dip"
-            android:layout_weight="25"
-            android:drawableLeft="@drawable/menu_icon_setting"
+            android:id="@+id/btnFloor2"
+            android:layout_width="76dp"
+            android:layout_height="45dip"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dip"
+            android:background="@drawable/buttonbackground"
             android:minWidth="100sp"
             android:onClick="menuButtonClick"
-            android:text="@string/setting_menu"
+            android:text="  Floor2  "
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/btnLogin_Out"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginBottom="-4dip"
-            android:layout_weight="25"
-            android:drawableLeft="@drawable/menu_icon_login"
+            android:id="@+id/btnFloor3"
+            android:layout_width="76dp"
+            android:layout_height="45dip"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dip"
+            android:background="@drawable/buttonbackground"
             android:minWidth="100sp"
             android:onClick="menuButtonClick"
-            android:text="@string/login_out"
+            android:text="  Floor3  "
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnFloor4"
+            android:layout_width="76dp"
+            android:layout_height="45dip"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dip"
+            android:background="@drawable/buttonbackground"
+            android:minWidth="100sp"
+            android:onClick="menuButtonClick"
+            android:text="  Floor4  "
             android:textStyle="bold" />
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/floor"
+        android:id="@+id/floor_Container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="15" >
+        android:layout_weight="10" >
     </LinearLayout>
 
 </LinearLayout>

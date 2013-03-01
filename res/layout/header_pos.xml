@@ -9,11 +9,10 @@
     <Button
         android:id="@+id/btnMap"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="right"
         android:layout_weight="25"
         android:drawableLeft="@drawable/menu_icon_map"
-        android:background="@drawable/buttonbackground"
         android:minWidth="100sp"
         android:onClick="menuButtonClick"
         android:text="@string/table_map_menu"

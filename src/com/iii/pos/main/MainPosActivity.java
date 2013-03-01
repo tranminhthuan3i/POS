@@ -19,6 +19,19 @@ public class MainPosActivity extends FragmentActivity implements
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main_pos);
+		// Create new transaction
+		FragmentManager fragmentManager = getSupportFragmentManager();
+		fragmentManager.popBackStack();
+
+		FragmentTransaction fragmentTransaction = fragmentManager
+				.beginTransaction();
+		MapPos mapPos = new MapPos();
+			fragmentTransaction
+					.replace(R.id.body_Pos_Container, mapPos);
+		
+		fragmentTransaction.addToBackStack(null);
+		// Commit the transaction
+		fragmentTransaction.commit();
 	}
 
 	@Override
@@ -28,7 +41,7 @@ public class MainPosActivity extends FragmentActivity implements
 		switch (btnKey) {
 		case 1:
 			// doing in the Map
-			myBodyFragemnt = new Body_Pos();
+			myBodyFragemnt = new MapPos();
 			break;
 		case 2:
 			// doing in the Invoice
