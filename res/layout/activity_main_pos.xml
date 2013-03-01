@@ -1,88 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="100" >
 
-    <!-- Left Layout -->
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_weight="10"
+        android:background="@android:color/holo_red_light"
         android:orientation="horizontal"
-        android:layout_weight="7"
         android:weightSum="100" >
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="35"
-            android:orientation="vertical" >
+            android:layout_height="match_parent"
+            android:layout_weight="30"
+            android:background="@android:color/holo_blue_dark"
+            android:orientation="vertical"
+            android:weightSum="100" >
 
-            <TabHost
-                android:id="@android:id/tabhost"
+            <fragment
+                android:id="@+id/headerMenuFragment"
+                android:name="com.iii.pos.common.Header_Pos"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" >
-
-                <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:background="@drawable/tabs_bkgrd"
-                    android:orientation="vertical" >
-
-                    <TabWidget
-                        android:id="@android:id/tabs"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content" >
-                    </TabWidget>
-
-                    <FrameLayout
-                        android:id="@android:id/tabcontent"
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent"
-                        android:background="@android:color/white" >
-                    </FrameLayout>
-                </LinearLayout>
-            </TabHost>
+                android:layout_height="match_parent"
+                android:layout_weight="90" />
+            <LinearLayout
+                android:id="@+id/body_Pos_Container"
+                android:layout_width="match_parent"
+                android:background="@android:color/holo_orange_light"
+                android:layout_height="match_parent"
+                android:layout_weight="10" />
         </LinearLayout>
 
-        <!-- Right Layout -->
-
-        <LinearLayout
+        <fragment
+            android:id="@+id/article_fragment"
             android:layout_width="match_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="65"
-            android:background="@android:color/black"
-            android:orientation="horizontal" >
-
-            <!-- Insert list item here -->
-
-            <ListView
-                android:id="@+id/listView1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" >
-            </ListView>
-        </LinearLayout>
+            android:name="com.iii.pos.common.Header_Pos"
+            android:layout_height="match_parent"
+            android:layout_weight="70" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="93"
-        android:gravity="center"
-        android:background="@drawable/item_selector"
-        android:orientation="vertical" >
-
-        <!-- Insert list item here -->
-		 <TextView
-                android:id="@+id/info"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="---------POS PROJECT III COMPANY------"
-                android:textSize="20dip"
-                android:textStyle="bold" />
-       
+        android:layout_height="match_parent"
+        android:layout_weight="90"
+        android:orientation="horizontal" >
+        <fragment
+            android:id="@+id/footer_Pos_Fragment"
+            android:layout_width="match_parent"
+            android:name="com.iii.pos.common.Footer_Pos"
+            android:layout_height="match_parent"
+            android:layout_weight="70" />
     </LinearLayout>
 
 </LinearLayout>
