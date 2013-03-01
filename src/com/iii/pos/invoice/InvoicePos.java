@@ -2,19 +2,16 @@ package com.iii.pos.invoice;
 
 import java.util.ArrayList;
 
-import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.iii.pos.R;
 import com.iii.pos.adapter.AdapterListInvoice;
-import com.iii.pos.adapter.Adapter_List_Dishes;
-import com.iii.pos.item.Items_Detail;
 
 public class InvoicePos extends Fragment {
 	private ListView invoiceList;
@@ -84,6 +81,19 @@ public class InvoicePos extends Fragment {
 		adapter = new AdapterListInvoice(invoiceLayout.getContext(),
 				R.layout.invoice_custom_listview, arr);
 		invoiceList.setAdapter(adapter);
+		
+		
+		//-----------------------get Button to excute--------------//
+		
+		Button btnAddInvoice = (Button) invoiceLayout.findViewById(R.id.addNewInvoice);
+		btnAddInvoice.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 		return invoiceLayout;
 	}
 

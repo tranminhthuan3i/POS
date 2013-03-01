@@ -39,6 +39,7 @@
         <LinearLayout
             android:id="@+id/category_container"
             android:layout_width="match_parent"
+            android:paddingRight="10dip"
             android:layout_height="match_parent"
             android:layout_weight="70" />
     </LinearLayout>

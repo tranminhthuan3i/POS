@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/item_selector_2"
+    android:orientation="horizontal"
+    android:paddingBottom="10.0dip"
+    android:paddingTop="10.0dip" >
+
+    <TextView
+        android:id="@+id/tvindex"
+        android:layout_width="0.0dip"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:paddingLeft="5.0dip"
+        android:text="I" />
+
+    <TextView
+        android:layout_width="0.5dip"
+        android:layout_height="match_parent"
+        android:background="@color/background_1"
+        android:paddingBottom="10.0dip"
+        android:paddingTop="10.0dip" />
+
+    <TextView
+        android:id="@+id/tvnameitem"
+        android:layout_width="0.0dip"
+        android:layout_height="match_parent"
+        android:layout_weight="5"
+        android:gravity="center"
+        android:text="name of item"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="0.5dip"
+        android:layout_height="match_parent"
+        android:background="@color/background_1"
+        android:paddingBottom="10.0dip"
+        android:paddingTop="10.0dip" />
+
+    <TextView
+        android:id="@+id/tvunit_item"
+        android:layout_width="0.0dip"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:gravity="center"
+        android:text="unit" />
+
+    <TextView
+        android:layout_width="0.5dip"
+        android:layout_height="match_parent"
+        android:background="@color/background_1"
+        android:paddingBottom="10.0dip"
+        android:paddingTop="10.0dip" />
+
+    <TextView
+        android:id="@+id/tvamount_item"
+        android:layout_width="0.0dip"
+        android:layout_height="match_parent"
+        android:layout_weight="0.5"
+        android:gravity="center"
+        android:text="amount" />
+
+    <TextView
+        android:layout_width="0.5dip"
+        android:layout_height="match_parent"
+        android:background="@color/background_1"
+        android:paddingBottom="10.0dip"
+        android:paddingTop="10.0dip" />
+
+    <TextView
+        android:id="@+id/tvcost_item"
+        android:layout_width="0.0dip"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:gravity="center"
+        android:text="Cost" />
+
+    <!--
+         <TextView
+        android:id="@+id/tvdescription_item"
+        android:layout_width="0.0dip"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="2"
+        android:text="Notes" />
+    -->
+
+    <LinearLayout
+        android:layout_width="0.0dip"
+        android:layout_height="match_parent"
+        android:layout_weight="1" >
+
+        <ImageButton
+            android:id="@+id/imbuttondelete"
+            android:layout_width="0.0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@android:drawable/ic_delete" />
+    </LinearLayout>
+
+</LinearLayout>
