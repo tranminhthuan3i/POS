@@ -73,13 +73,18 @@ public class MainPosActivity extends FragmentActivity implements
 		if (myBodyFragemnt != null) {
 			fragmentTransaction
 					.replace(R.id.body_Pos_Container, myBodyFragemnt);
+			if (btnKey == 1 || btnKey == 2) {
+				Category_Item_PosActivity category_item = new Category_Item_PosActivity();
+				fragmentTransaction.replace(R.id.category_container,
+						category_item);
+			}
 		}
-		if(btnKey==2){
-			//insert invoice detail to right
-			
+		if (btnKey == 2) {
+			// insert invoice detail to right
+
 		}
-		fragmentTransaction
-				.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+//		fragmentTransaction
+//				.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
 		fragmentTransaction.addToBackStack(null);
 		// Commit the transaction
 		fragmentTransaction.commit();

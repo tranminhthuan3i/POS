@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bgfooter"
+    android:gravity="center"
     android:orientation="vertical" >
     <TextView
             android:id="@+id/info"
@@ -10,6 +11,7 @@
             android:layout_height="wrap_content"
             android:text="---------FOOTER------"
             android:textSize="20dip"
+            android:textColor="@android:color/holo_blue_light"
             android:textStyle="bold" />
 
 </LinearLayout>
