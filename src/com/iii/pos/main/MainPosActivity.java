@@ -10,6 +10,7 @@ import com.iii.pos.R;
 import com.iii.pos.common.Body_Pos;
 import com.iii.pos.common.Header_Pos;
 import com.iii.pos.invoice.InvoicePos;
+import com.iii.pos.item.Category_Item_PosActivity;
 import com.iii.pos.map.MapPos;
 
 public class MainPosActivity extends FragmentActivity implements
@@ -26,9 +27,10 @@ public class MainPosActivity extends FragmentActivity implements
 		FragmentTransaction fragmentTransaction = fragmentManager
 				.beginTransaction();
 		MapPos mapPos = new MapPos();
-			fragmentTransaction
-					.replace(R.id.body_Pos_Container, mapPos);
-		
+		fragmentTransaction.replace(R.id.body_Pos_Container, mapPos);
+		Category_Item_PosActivity category_item = new Category_Item_PosActivity();
+		fragmentTransaction.replace(R.id.category_container, category_item);
+
 		fragmentTransaction.addToBackStack(null);
 		// Commit the transaction
 		fragmentTransaction.commit();
@@ -71,6 +73,10 @@ public class MainPosActivity extends FragmentActivity implements
 		if (myBodyFragemnt != null) {
 			fragmentTransaction
 					.replace(R.id.body_Pos_Container, myBodyFragemnt);
+		}
+		if(btnKey==2){
+			//insert invoice detail to right
+			
 		}
 		fragmentTransaction
 				.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);

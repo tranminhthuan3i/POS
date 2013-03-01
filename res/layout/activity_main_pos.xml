@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="10"
-        android:background="@android:color/holo_red_light"
+        android:background="@android:color/darker_gray"
         android:orientation="horizontal"
         android:weightSum="100" >
 
@@ -36,10 +36,9 @@
                 android:layout_weight="10" />
         </LinearLayout>
 
-        <fragment
-            android:id="@+id/article_fragment"
+        <LinearLayout
+            android:id="@+id/category_container"
             android:layout_width="match_parent"
-            android:name="com.iii.pos.common.Header_Pos"
             android:layout_height="match_parent"
             android:layout_weight="70" />
     </LinearLayout>

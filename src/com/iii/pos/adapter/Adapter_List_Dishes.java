@@ -1,7 +1,6 @@
 package com.iii.pos.adapter;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import android.content.Context;
 import android.util.Log;
@@ -17,16 +16,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.iii.pos.R;
-import com.iii.pos.item.Items_Detail;
+import com.iii.pos.item.Detail_Items;
 
-public class Adapter_List_Dishes extends ArrayAdapter<Items_Detail> {
+public class Adapter_List_Dishes extends ArrayAdapter<Detail_Items> {
 
 	Context context;
-	ArrayList<Items_Detail> itemlist;
-	List<String> li;
-
+	ArrayList<Detail_Items> itemlist;
 	public Adapter_List_Dishes(Context context, int textViewResourceId,
-			ArrayList<Items_Detail> objects) {
+			ArrayList<Detail_Items> objects) {
 		super(context, textViewResourceId, objects);
 		this.itemlist = objects;
 		this.context = context;
@@ -44,48 +41,47 @@ public class Adapter_List_Dishes extends ArrayAdapter<Items_Detail> {
 			if (item == null) {
 				LayoutInflater inflate = (LayoutInflater) this.context
 						.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-				item = inflate.inflate(R.layout.listitem_temp, null);
+				item = inflate.inflate(R.layout.temp_listitem, null);
 			}
-			final Items_Detail itemdetail = itemlist.get(position);
+			final Detail_Items itemdetail = itemlist.get(position);
 			if (itemdetail != null) {
-				TextView tv1 = (TextView) item.findViewById(R.id.textview1);
-				TextView tv2 = (TextView) item.findViewById(R.id.textview2);
-				TextView tv3 = (TextView) item.findViewById(R.id.textview3);
+				TextView tvName = (TextView) item.findViewById(R.id.tvNameItem);
+				TextView tvDetail = (TextView) item.findViewById(R.id.tvDetailItem);
+				TextView tvPrice = (TextView) item.findViewById(R.id.tvPriceItem);
 
-				int status = itemdetail.getStatus();
+				float Price = itemdetail.getPrice();
 
-				tv2.setText(String.valueOf(itemdetail.get_id()));
-				tv1.setText(String.valueOf(itemdetail.getName()));
-				tv3.setText(String.valueOf(status+" $"));
+				tvName.setText(String.valueOf(itemdetail.getName()));
+				tvDetail.setText(String.valueOf(itemdetail.getDescription()));
+				tvPrice.setText(String.valueOf(Price+" VNĐ"));
 
-				li = new ArrayList<String>();
-				for (int i = 1; i <= status; i++) {
-
-					li.add(String.valueOf(i));
-				}
 				
-				final EditText edit = (EditText) item.findViewById(R.id.editText1);
+				
+				
+				final EditText quantity = (EditText) item.findViewById(R.id.textQuantity);
 
-				final CheckBox check = (CheckBox) item
-						.findViewById(R.id.checkbox);
-//				if (check.isChecked() == false) {
-//						edit.setVisibility(EditText.GONE);
-//				}
-//				check.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-//
-//					@Override
-//					public void onCheckedChanged(CompoundButton buttonView,
-//							boolean isChecked) {
-//						if (check.isChecked() == false) {
-//							edit.setVisibility(EditText.GONE);
-//						} else {
-//							edit.setVisibility(EditText.VISIBLE);
-//						}
-//					}
-//				});
+				final CheckBox checkselect = (CheckBox) item.findViewById(R.id.checkSelect);
+				if (checkselect.isChecked() == false) {
+					quantity.setVisibility(EditText.GONE);
+				}
+				checkselect.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+					@Override
+					public void onCheckedChanged(CompoundButton buttonView,
+							boolean isChecked) {
+						if (checkselect.isChecked() == false) {
+							quantity.setVisibility(EditText.GONE);
+						} else if(checkselect.isChecked() == true){
+							quantity.setVisibility(EditText.VISIBLE);
+							quantity.requestFocus();
+						}
+					}
+				});
 				
 				ImageView im = (ImageView) item.findViewById(R.id.image_view);
 				im.setBackgroundResource(arrim[position]);
+
+
 			}
 
 		} catch (Exception e) {
