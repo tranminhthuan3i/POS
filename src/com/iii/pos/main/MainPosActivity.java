@@ -63,7 +63,9 @@ public class MainPosActivity extends FragmentActivity implements
 		}
 		// Create new transaction
 		FragmentManager fragmentManager = getSupportFragmentManager();
-		fragmentManager.popBackStack();
+		if (fragmentManager.getBackStackEntryCount() > 1) {
+			fragmentManager.popBackStack();
+		}
 
 		FragmentTransaction fragmentTransaction = fragmentManager
 				.beginTransaction();
@@ -86,9 +88,9 @@ public class MainPosActivity extends FragmentActivity implements
 						invoice_detail);
 			}
 		}
-		
-//		fragmentTransaction
-//				.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+
+		// fragmentTransaction
+		// .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
 		fragmentTransaction.addToBackStack(null);
 		// Commit the transaction
 		fragmentTransaction.commit();

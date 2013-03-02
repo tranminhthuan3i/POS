@@ -52,14 +52,14 @@ public class MapPos extends Fragment {
 			int key = v.getId();
 			switch (key) {
 			case R.id.btnFloor1:
-				
+
 				mapFloorFragemnt = new Floor1();
 				break;
 			case R.id.btnFloor2:
 				mapFloorFragemnt = new Floor2();
 				break;
 			case R.id.btnFloor3:
-				
+
 				break;
 			case R.id.btnFloor4:
 
@@ -70,7 +70,7 @@ public class MapPos extends Fragment {
 			}
 			// Create new transaction
 			FragmentManager fragmentManager = getFragmentManager();
-			if (fragmentManager.getBackStackEntryCount() > 1) {
+			if (fragmentManager.getBackStackEntryCount()>1) {
 				fragmentManager.popBackStack();
 			}
 
@@ -91,6 +91,5 @@ public class MapPos extends Fragment {
 			fragmentTransaction.commit();
 		}
 	};
-	
 
 }

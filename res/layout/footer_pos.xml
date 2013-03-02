@@ -5,13 +5,14 @@
     android:background="@color/bgfooter"
     android:gravity="center"
     android:orientation="vertical" >
+
     <TextView
-            android:id="@+id/info"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="---------FOOTER------"
-            android:textSize="20dip"
-            android:textColor="@android:color/holo_blue_light"
-            android:textStyle="bold" />
+        android:id="@+id/usernameanim"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="Times New Roman"
+        android:scrollHorizontally="true"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
 
 </LinearLayout>
