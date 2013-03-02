@@ -80,8 +80,6 @@ public class Adapter_List_Dishes extends ArrayAdapter<Detail_Items> {
 				
 				ImageView im = (ImageView) item.findViewById(R.id.image_view);
 				im.setBackgroundResource(arrim[position]);
-
-
 			}
 
 		} catch (Exception e) {
