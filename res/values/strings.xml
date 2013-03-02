@@ -5,15 +5,19 @@
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
     <!-- User String -->
-	<string name="username">User Name \u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020  </string>
+    <string name="username">User Name \u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020  </string>
     <string name="invoicecode">Invoice Code \u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020  </string>
     <string name="invoicetimein">Time In    \u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020  </string>
     <string name="invoicetimeout">Time Out   \u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020  </string>
     <string name="titleinvoice">REPORT LIST OF ITEMS</string>
+    <string name="invoiceaddress">Address  \u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020</string>
+	<string name="invoicephone">Phone  \u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020</string>
     
-    <!--The Menu String  -->
+    
+    <!-- The Menu String -->
     <string name="table_map_menu">Table Map</string>
     <string name="invoice_menu">Invoice</string>
     <string name="setting_menu">Settings</string>
     <string name="login_out">Sign In</string>
+
 </resources>

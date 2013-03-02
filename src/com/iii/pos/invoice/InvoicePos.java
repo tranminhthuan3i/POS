@@ -2,6 +2,8 @@ package com.iii.pos.invoice;
 
 import java.util.ArrayList;
 
+import android.app.Dialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -81,20 +83,72 @@ public class InvoicePos extends Fragment {
 		adapter = new AdapterListInvoice(invoiceLayout.getContext(),
 				R.layout.invoice_custom_listview, arr);
 		invoiceList.setAdapter(adapter);
-		
-		
-		//-----------------------get Button to excute--------------//
-		
-		Button btnAddInvoice = (Button) invoiceLayout.findViewById(R.id.addNewInvoice);
+
+		// -----------------------get Button to excute--------------//
+
+		Button btnAddInvoice = (Button) invoiceLayout
+				.findViewById(R.id.addNewInvoice);
 		btnAddInvoice.setOnClickListener(new View.OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				
+				addNewInvoice(invoiceLayout.getContext());
 			}
 		});
 		return invoiceLayout;
+	}
+
+	// dialgo here
+	private void addNewInvoice(Context context) {
+		final Dialog dialog = new Dialog(context);
+		dialog.setTitle("Creating The Invoice");
+		dialog.setContentView(R.layout.invoice_add);
+		dialog.setCancelable(false);
+		/*Button btnStart = (Button) dialog.findViewById(R.id.btnStart);
+		btnStart.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+
+				
+				 * UpdataUserInit up = new UpdataUserInit(); up.execute();
+				 
+				new playSound(getApplicationContext()).playButton();
+				// show right layout
+
+				// icon_me.setImageResource(R.drawable.temp_thumbnail_mimirin);
+				ShowMap_Activity.sex = 0;
+
+				updateSex();
+				dialog.dismiss();
+				Message msg = handler.obtainMessage();
+				handler.sendMessage(msg);
+
+			}
+		});
+
+		ImageView btnThoat = (ImageView) dialog.findViewById(R.id.btnThoat);
+		btnThoat.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				new playSound(getApplicationContext()).playButton();
+				// show right layout
+
+				ShowMap_Activity.sex = 1;
+
+				updateSex();
+				dialog.dismiss();
+				// Message msg = handler.obtainMessage();
+				// handler.sendMessage(msg);
+			}
+		});*/
+		try {
+			dialog.show();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }
