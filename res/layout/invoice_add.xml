@@ -117,8 +117,7 @@
 
             <EditText
                 android:id="@+id/editusername"
-                android:layout_width="200dip"
-                android:layout_height="30dip"
+                android:layout_width="180dip"
                 android:layout_height="wrap_content"
                 android:background="@drawable/txtbackground" >
             </EditText>
@@ -141,7 +140,7 @@
 
             <EditText
                 android:id="@+id/editusername33"
-                android:layout_width="200dip"
+                android:layout_width="180dip"
                 android:layout_height="wrap_content"
                 android:background="@drawable/txtbackground" >
             </EditText>
@@ -261,6 +260,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="20"
+        android:layout_marginBottom="30dip"
         android:gravity="center"
         android:orientation="horizontal"
         android:weightSum="100" >

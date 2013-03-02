@@ -13,6 +13,7 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:gravity="center"
+        android:textColor="@color/white"
         android:paddingLeft="5.0dip"
         android:text="I" />
 
@@ -29,6 +30,7 @@
         android:layout_height="match_parent"
         android:layout_weight="5"
         android:gravity="center"
+        android:textColor="@color/white"
         android:text="name of item"
         android:textStyle="bold" />
 
@@ -45,6 +47,7 @@
         android:layout_height="match_parent"
         android:layout_weight="2"
         android:gravity="center"
+        android:textColor="@color/white"
         android:text="unit" />
 
     <TextView
@@ -60,6 +63,7 @@
         android:layout_height="match_parent"
         android:layout_weight="0.5"
         android:gravity="center"
+        android:textColor="@color/white"
         android:text="amount" />
 
     <TextView
@@ -75,6 +79,7 @@
         android:layout_height="match_parent"
         android:layout_weight="2"
         android:gravity="center"
+        android:textColor="@color/white"
         android:text="Cost" />
 
     <!--
@@ -94,7 +99,7 @@
 
         <ImageButton
             android:id="@+id/imbuttondelete"
-            android:layout_width="0.0dip"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:src="@android:drawable/ic_delete" />

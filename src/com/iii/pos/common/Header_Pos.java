@@ -32,7 +32,7 @@ public class Header_Pos extends Fragment {
 	// deliver messages
 	public interface OnHeadderSelectedListener {
 		/** Called by HeadlinesFragment when a list item is selected */
-		public void onMenuButtonClick(int btnKey);
+		public void onMenuButtonClick(int btnKey, View view);
 	}
 
 	@Override
@@ -158,7 +158,7 @@ public class Header_Pos extends Fragment {
 			default:
 				break;
 			}
-			mCallback.onMenuButtonClick(btnKey);
+			mCallback.onMenuButtonClick(btnKey, getView());
 		}
 	};
 

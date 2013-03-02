@@ -104,7 +104,7 @@ public class InvoicePos extends Fragment {
 		final Dialog dialog = new Dialog(context);
 		dialog.setTitle("Creating The Invoice");
 		dialog.setContentView(R.layout.invoice_add);
-		dialog.setCancelable(false);
+		dialog.setCancelable(true);
 		/*Button btnStart = (Button) dialog.findViewById(R.id.btnStart);
 		btnStart.setOnClickListener(new View.OnClickListener() {
 

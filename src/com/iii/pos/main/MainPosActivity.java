@@ -1,10 +1,13 @@
 package com.iii.pos.main;
 
+import android.app.Dialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.view.View;
 
 import com.iii.pos.R;
 import com.iii.pos.common.Body_Pos;
@@ -35,10 +38,11 @@ public class MainPosActivity extends FragmentActivity implements
 		fragmentTransaction.addToBackStack(null);
 		// Commit the transaction
 		fragmentTransaction.commit();
+		login_out(getApplicationContext());
 	}
 
 	@Override
-	public void onMenuButtonClick(int btnKey) {
+	public void onMenuButtonClick(int btnKey,View v) {
 		// TODO Auto-generated method stub
 		Fragment myBodyFragemnt = null;
 		switch (btnKey) {
@@ -55,6 +59,7 @@ public class MainPosActivity extends FragmentActivity implements
 			break;
 		case 4:
 			// doing in the Login_out
+			login_out(v.getContext());
 			break;
 
 		default:
@@ -62,18 +67,18 @@ public class MainPosActivity extends FragmentActivity implements
 
 		}
 		// Create new transaction
-		FragmentManager fragmentManager = getSupportFragmentManager();
-		if (fragmentManager.getBackStackEntryCount() > 1) {
-			fragmentManager.popBackStack();
-		}
-
-		FragmentTransaction fragmentTransaction = fragmentManager
-				.beginTransaction();
-		// Replace whatever is in the fragment_container view with this
-		// fragment,
-		// and add the transaction to the back stack
 
 		if (myBodyFragemnt != null) {
+			FragmentManager fragmentManager = getSupportFragmentManager();
+			if (fragmentManager.getBackStackEntryCount() > 1) {
+				fragmentManager.popBackStack();
+			}
+
+			FragmentTransaction fragmentTransaction = fragmentManager
+					.beginTransaction();
+			// Replace whatever is in the fragment_container view with this
+			// fragment,
+			// and add the transaction to the back stack
 			fragmentTransaction
 					.replace(R.id.body_Pos_Container, myBodyFragemnt);
 			if (btnKey == 1) {
@@ -87,13 +92,14 @@ public class MainPosActivity extends FragmentActivity implements
 				fragmentTransaction.replace(R.id.category_container,
 						invoice_detail);
 			}
+			// .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+			fragmentTransaction.addToBackStack(null);
+			// Commit the transaction
+			fragmentTransaction.commit();
+
 		}
 
 		// fragmentTransaction
-		// .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-		fragmentTransaction.addToBackStack(null);
-		// Commit the transaction
-		fragmentTransaction.commit();
 	}
 
 	@Override
@@ -102,5 +108,48 @@ public class MainPosActivity extends FragmentActivity implements
 		FragmentManager fragmentManager = getSupportFragmentManager();
 		fragmentManager.popBackStack();
 		super.onBackPressed();
+	}
+
+	private void login_out(Context context) {
+		final Dialog dialog = new Dialog(context);
+		dialog.setTitle("User Login");
+		dialog.setContentView(R.layout.login_pos);
+		dialog.setCancelable(true);
+		/*
+		 * Button btnStart = (Button) dialog.findViewById(R.id.btnStart);
+		 * btnStart.setOnClickListener(new View.OnClickListener() {
+		 * 
+		 * @Override public void onClick(View v) {
+		 * 
+		 * 
+		 * UpdataUserInit up = new UpdataUserInit(); up.execute();
+		 * 
+		 * new playSound(getApplicationContext()).playButton(); // show right
+		 * layout
+		 * 
+		 * // icon_me.setImageResource(R.drawable.temp_thumbnail_mimirin);
+		 * ShowMap_Activity.sex = 0;
+		 * 
+		 * updateSex(); dialog.dismiss(); Message msg = handler.obtainMessage();
+		 * handler.sendMessage(msg);
+		 * 
+		 * } });
+		 * 
+		 * ImageView btnThoat = (ImageView) dialog.findViewById(R.id.btnThoat);
+		 * btnThoat.setOnClickListener(new View.OnClickListener() {
+		 * 
+		 * @Override public void onClick(View v) { new
+		 * playSound(getApplicationContext()).playButton(); // show right layout
+		 * 
+		 * ShowMap_Activity.sex = 1;
+		 * 
+		 * updateSex(); dialog.dismiss(); // Message msg =
+		 * handler.obtainMessage(); // handler.sendMessage(msg); } });
+		 */
+		try {
+			dialog.show();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }
