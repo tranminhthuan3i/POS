@@ -1,0 +1,48 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/item_selector"
+    android:gravity="left|center"
+    android:orientation="horizontal"
+    android:padding="10.0dip" >
+    <ImageView 
+        android:id="@+id/img_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/cakho"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.02"
+        android:orientation="vertical" 
+        android:layout_marginLeft="8dp"
+>
+
+        <TextView
+            android:id="@+id/tvNameCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:shadowRadius="5"
+            android:textSize="20.0dip"
+            android:textStyle="bold" 
+            android:textColor="@android:color/white"/>
+
+        <TextView
+            android:id="@+id/tvDescriptionCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:shadowRadius="5" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:src="@drawable/next" />
+
+</LinearLayout>
