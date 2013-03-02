@@ -194,8 +194,8 @@
             android:layout_marginTop="20dip" >
         </ListView>
 
-        <!--
-        <LinearLayout
+        
+      <!--   <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" >
@@ -220,8 +220,8 @@
                 android:text="TOTAL :"
                 android:textSize="20dip"
                 android:textStyle="bold" />
-        </LinearLayout>
-        -->
+            </LinearLayout> -->
+        
         
 
         <LinearLayout
@@ -235,7 +235,8 @@
                 android:layout_height="45dip"
                 android:layout_gravity="center"
                 android:background="@drawable/buttonbackground"
-                android:text="  PRINT  " />
+                android:text="  PRINT  " 
+                android:textColor="@color/white"/>
 
             <Button
                 android:layout_width="80dip"
@@ -243,7 +244,8 @@
                 android:layout_gravity="center"
                 android:layout_marginLeft="50dip"
                 android:background="@drawable/buttonbackground"
-                android:text="  VIEWER  " />
+                android:text="  VIEWER  "
+                android:textColor="@color/white" />
             <Button
                 android:id="@+id/addNewInvoice"
                 android:layout_width="80dip"
@@ -251,7 +253,8 @@
                 android:layout_gravity="center"
                 android:layout_marginLeft="50dip"
                 android:background="@drawable/buttonbackground"
-                android:text="  ADDNEW  " />
+                android:text="  ADD NEW  "
+                android:textColor="@color/white" />
         </LinearLayout>
     </LinearLayout>
 
