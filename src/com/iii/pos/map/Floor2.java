@@ -25,9 +25,10 @@ public class Floor2 extends Fragment {
 				false);
 		// URLWebview = getResources().getString(R.string.poswebview);
 		webView = (WebView) mapFloorLayout.findViewById(R.id.webView1);
-		webView.getSettings().setJavaScriptEnabled(true);
 		webView.loadUrl("http://3i.com.vn/pos/map/main/floor2.php?android_id=1"
-		/* + getAndroid_Id() */);
+				/* + getAndroid_Id() */);
+		webView.getSettings().setJavaScriptEnabled(true);
+		
 
 		return mapFloorLayout;
 	}

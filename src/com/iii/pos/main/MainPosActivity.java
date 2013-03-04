@@ -10,11 +10,12 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 
 import com.iii.pos.R;
-import com.iii.pos.common.Body_Pos;
 import com.iii.pos.common.Header_Pos;
 import com.iii.pos.invoice.InvoicePos;
 import com.iii.pos.invoice.Invoice_Detail_PosActivity;
 import com.iii.pos.item.Category_Item_PosActivity;
+import com.iii.pos.map.Floor1;
+import com.iii.pos.map.Floor2;
 import com.iii.pos.map.MapPos;
 
 public class MainPosActivity extends FragmentActivity implements

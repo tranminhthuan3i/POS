@@ -58,22 +58,23 @@ public class Adapter_List_Dishes extends ArrayAdapter<Detail_Items> {
 				
 				
 				
-				final EditText quantity = (EditText) item.findViewById(R.id.textQuantity);
+				final EditText inputAmountItem = (EditText) item.findViewById(R.id.textQuantity);
 
 				final CheckBox checkselect = (CheckBox) item.findViewById(R.id.checkSelect);
 				if (checkselect.isChecked() == false) {
-					quantity.setVisibility(EditText.GONE);
+					inputAmountItem.setVisibility(View.GONE);
 				}
+				
 				checkselect.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
 					@Override
 					public void onCheckedChanged(CompoundButton buttonView,
 							boolean isChecked) {
-						if (checkselect.isChecked() == false) {
-							quantity.setVisibility(EditText.GONE);
-						} else if(checkselect.isChecked() == true){
-							quantity.setVisibility(EditText.VISIBLE);
-							quantity.requestFocus();
+						if (isChecked) {
+							inputAmountItem.setVisibility(View.VISIBLE);
+							inputAmountItem.requestFocus();
+						}else{
+							inputAmountItem.setVisibility(View.GONE);
 						}
 					}
 				});

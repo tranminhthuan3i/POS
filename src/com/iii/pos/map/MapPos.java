@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
+import android.widget.LinearLayout;
 
 import com.iii.pos.R;
 
@@ -32,17 +32,24 @@ public class MapPos extends Fragment {
 		Button btnFloor4 = (Button) mapLayout.findViewById(R.id.btnFloor4);
 		btnFloor4.setOnClickListener(btnFloorClickListener);
 
-		// get an instance of FragmentTransaction from your Activity
-		FragmentManager fragmentManager = getFragmentManager();
-		FragmentTransaction fragmentTransaction = fragmentManager
-				.beginTransaction();
-
-		// add a fragment
-		Floor1 myFragment = new Floor1();
-		fragmentTransaction.add(R.id.floor_Container, myFragment);
-		fragmentTransaction.commit();
+		// // get an instance of FragmentTransaction from your Activity
+		 FragmentManager fragmentManager = getChildFragmentManager();
+		 FragmentTransaction fragmentTransaction = fragmentManager
+		 .beginTransaction();
+		
+		 // add a fragment
+		 Floor2 myFragment = new Floor2();
+		 System.out.println("999999999999999999999999999999999999999999999999999999999   " +fragmentManager.getBackStackEntryCount());
+//		 if(fragmentManager.getBackStackEntryCount()>1){
+//			 fragmentManager.popBackStack();
+//		 }
+		 fragmentTransaction.add(R.id.fmapcontainer, myFragment);
+		 fragmentTransaction.addToBackStack(null);
+		 fragmentTransaction.commit();
 		return mapLayout;
 	}
+
+	
 
 	Button.OnClickListener btnFloorClickListener = new Button.OnClickListener() {
 		@Override
@@ -54,6 +61,7 @@ public class MapPos extends Fragment {
 			case R.id.btnFloor1:
 
 				mapFloorFragemnt = new Floor1();
+				
 				break;
 			case R.id.btnFloor2:
 				mapFloorFragemnt = new Floor2();
@@ -69,10 +77,10 @@ public class MapPos extends Fragment {
 				break;
 			}
 			// Create new transaction
-			FragmentManager fragmentManager = getFragmentManager();
-			if (fragmentManager.getBackStackEntryCount()>1) {
-				fragmentManager.popBackStack();
-			}
+			FragmentManager fragmentManager = getChildFragmentManager();
+//			if (fragmentManager.getBackStackEntryCount() > 1) {
+//				fragmentManager.popBackStack();
+//			}
 
 			FragmentTransaction fragmentTransaction = fragmentManager
 					.beginTransaction();
@@ -81,7 +89,7 @@ public class MapPos extends Fragment {
 			// and add the transaction to the back stack
 
 			if (mapFloorFragemnt != null) {
-				fragmentTransaction.replace(R.id.floor_Container,
+				fragmentTransaction.replace(R.id.fmapcontainer,
 						mapFloorFragemnt);
 			}
 			fragmentTransaction

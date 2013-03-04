@@ -132,7 +132,7 @@ public final class R {
         public static final int edtPassword=0x7f0a0026;
         public static final int edtPassword2=0x7f0a003d;
         public static final int edtUsername=0x7f0a0024;
-        public static final int floor_Container=0x7f0a0031;
+        public static final int fmapcontainer=0x7f0a0031;
         public static final int footer_Pos_Fragment=0x7f0a0005;
         public static final int headerMenuFragment=0x7f0a0002;
         public static final int imageView1=0x7f0a0050;
