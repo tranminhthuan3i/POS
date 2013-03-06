@@ -11,11 +11,14 @@ public class Detail_Items {
 	private String create_time;
 	private String update_time;
 	private int flag;
-
+	private boolean selected;
 	public int getItem_id() {
 		return item_id;
 	}
 
+	public boolean isSelected() {
+		return selected;
+	}
 	public void setItem_id(int item_id) {
 		this.item_id = item_id;
 	}
@@ -82,6 +85,9 @@ public class Detail_Items {
 
 	public void setFlag(int flag) {
 		this.flag = flag;
+	}
+	public void setSelected(boolean selected) {
+		this.selected = selected;
 	}
 
 }

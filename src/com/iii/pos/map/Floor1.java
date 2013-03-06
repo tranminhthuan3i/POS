@@ -1,19 +1,18 @@
 package com.iii.pos.map;
 
-import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.telephony.TelephonyManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 
+import com.google.android.maps.MapView;
 import com.iii.pos.R;
 
 public class Floor1 extends Fragment {
 	private WebView webView;
+	private MapView mapview;
 	private String URLWebview = "";
 
 	// Context context=MyFragment.this;

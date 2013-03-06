@@ -1,6 +1,7 @@
 package com.iii.pos.item;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 import com.iii.pos.R;
 import com.iii.pos.adapter.Adapter_List_Dishes;
 import com.iii.pos.adapter.Adapter_list_Category;
+import com.iii.pos.model.AdapterThuan;
 
 public class Category_Item_PosActivity extends Fragment {
 
@@ -28,21 +30,22 @@ public class Category_Item_PosActivity extends Fragment {
 	private TextView tvtitle;
 	private ImageButton imbuttom;
 	private TextView tvgach;
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		final View categoryLayout = inflater.inflate(R.layout.category_item,
 				container, false);
-		
-		try {
 
+		try {
 
 			imbuttom = (ImageButton) categoryLayout.findViewById(R.id.btnback);
 			tvgach = (TextView) categoryLayout.findViewById(R.id.tvgach);
 			tvgach.setVisibility(TextView.GONE);
 			imbuttom.setVisibility(ImageButton.GONE);
 
-			tvtitle = (TextView) categoryLayout.findViewById(R.id.tvDisplayCateAndItem);
+			tvtitle = (TextView) categoryLayout
+					.findViewById(R.id.tvDisplayCateAndItem);
 			lv = (ListView) categoryLayout.findViewById(R.id.listView1);
 			loadCategoryInfo();
 
@@ -117,7 +120,7 @@ public class Category_Item_PosActivity extends Fragment {
 		adb = new Adapter_list_Category(getActivity().getApplicationContext(),
 				R.layout.category_item, arr);
 		lv.setAdapter(adb);
-		
+
 	}
 
 	private void loadItemInfo(int cate_id) {
@@ -144,8 +147,7 @@ public class Category_Item_PosActivity extends Fragment {
 		arr1.add(item2);
 		arr1.add(item3);
 		arr1.add(item4);
-		adb1 = new Adapter_List_Dishes(getActivity().getApplicationContext(),
-				R.layout.category_item, arr1);
+		adb1 = new Adapter_List_Dishes(getActivity(), R.layout.category_item, arr1);
 		lv.setAdapter(adb1);
 	}
 

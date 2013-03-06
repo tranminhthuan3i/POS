@@ -60,11 +60,7 @@
         </LinearLayout>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="0.0dip"
-        android:layout_height="wrap_content"
-        android:layout_weight="2"
-        android:paddingRight="10.0dip" >
+  
 
         <EditText
             android:id="@+id/textQuantity"
@@ -79,13 +75,6 @@
             android:id="@+id/checkSelect"
             android:layout_width="40.0dip"
             android:layout_height="match_parent" />
-        <!--
-             <Spinner
-            android:id="@+id/spiner"
-            android:layout_width="0.0dip"
-            android:layout_height="match_parent" 
-            android:layout_weight="1"/>
-        -->
-    </LinearLayout>
+    
 
 </LinearLayout>

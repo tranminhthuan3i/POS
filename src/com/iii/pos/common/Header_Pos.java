@@ -1,12 +1,15 @@
 package com.iii.pos.common;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.iii.pos.R;
@@ -25,6 +28,10 @@ public class Header_Pos extends Fragment {
 	private static final int ID_INFO = 4;
 
 	private QuickMenuAction quickAction;
+	String strCurrency[] = { "VNĐ", "USD", "CNY", "JPY", "SGD", "LAK", "KRW",
+			"KHR" };
+	String strLanguage[] = { "Việt Nam", "English", "Trung Quốc", "Nhật",
+			"Singapore", "Lao", "Campuchia" };
 	// ---------callback for action--------------
 	OnHeadderSelectedListener mCallback;
 
@@ -87,16 +94,22 @@ public class Header_Pos extends Fragment {
 						// pos or actionId parameter
 						if (actionId == ID_LANGUAGE) {
 							Toast.makeText(headerLayout.getContext(),
-									"Let's do some search action",
-									Toast.LENGTH_SHORT).show();
+									"ID_LANGUAGE", Toast.LENGTH_SHORT).show();
+							createDialogSettingLanguage();
 						} else if (actionId == ID_INFO) {
 							Toast.makeText(headerLayout.getContext(),
-									"I have no info this time",
-									Toast.LENGTH_SHORT).show();
-						} else {
+									"ID_INFO", Toast.LENGTH_SHORT).show();
+							createDialogSettingInfo();
+						} else if (actionId == ID_CURRENCY) {
 							Toast.makeText(headerLayout.getContext(),
-									actionItem.getTitle() + " selected",
-									Toast.LENGTH_SHORT).show();
+									"ID_CURRENCY selected", Toast.LENGTH_SHORT)
+									.show();
+							createDialogSettingCurrency();
+						} else if (actionId == ID_SERVER) {
+							Toast.makeText(headerLayout.getContext(),
+									"ID_SERVER selected", Toast.LENGTH_SHORT)
+									.show();
+							createDialogSettingServer();
 						}
 					}
 				});
@@ -126,6 +139,9 @@ public class Header_Pos extends Fragment {
 		Button btnLogin_out = (Button) headerLayout
 				.findViewById(R.id.btnLogin_Out);
 		btnLogin_out.setOnClickListener(btnFragmentOnClickListener);
+		Button btnTrackingMap = (Button) headerLayout
+				.findViewById(R.id.btnTrackingMap);
+		btnTrackingMap.setOnClickListener(btnFragmentOnClickListener);
 		// Inflate the layout for this fragment
 		return headerLayout;
 	}
@@ -154,7 +170,8 @@ public class Header_Pos extends Fragment {
 			case R.id.btnLogin_Out:
 				btnKey = 4;
 				break;
-
+			case R.id.btnTrackingMap:
+				btnKey = 5;
 			default:
 				break;
 			}
@@ -174,5 +191,74 @@ public class Header_Pos extends Fragment {
 			throw new ClassCastException(activity.toString()
 					+ " must implement OnHeadlineSelectedListener");
 		}
+	}
+
+	private void createDialogSettingServer() {
+
+		final Dialog dialog = new Dialog(getActivity());
+		dialog.setContentView(R.layout.setting_server);
+		dialog.setTitle("IP Address : ");
+		dialog.setCancelable(false);
+		Button btnConnect = (Button) dialog.findViewById(R.id.btnConnect);
+		btnConnect.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+
+				Toast.makeText(getActivity(), "Please Input IP Address",
+						Toast.LENGTH_LONG).show();
+			}
+		});
+		Button btnCancel = (Button) dialog.findViewById(R.id.btnCancel);
+		btnCancel.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				dialog.dismiss();
+			}
+		});
+
+		dialog.show();
+
+	}
+
+	private void createDialogSettingCurrency() {
+		final Dialog dialog = new Dialog(getActivity(),
+				android.R.style.Theme_NoTitleBar);
+		dialog.setContentView(R.layout.setting_currency);
+
+		ListView lv = (ListView) dialog.findViewById(R.id.lvCurrency);
+
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
+				android.R.layout.simple_spinner_item, strCurrency);
+
+		lv.setAdapter(adapter);
+
+		dialog.show();
+	}
+
+	private void createDialogSettingInfo() {
+		final Dialog dialog = new Dialog(getActivity());
+		dialog.setContentView(R.layout.setting_info);
+		dialog.setTitle("Infomation  ");
+
+		dialog.show();
+	}
+
+	private void createDialogSettingLanguage() {
+		final Dialog dialog = new Dialog(getActivity(),
+				android.R.style.Theme_Translucent_NoTitleBar);
+		dialog.setContentView(R.layout.setting_language);
+		dialog.setTitle("Language ");
+
+		ListView lv = (ListView) dialog.findViewById(R.id.lvLanguage);
+
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
+				android.R.layout.simple_spinner_item, strLanguage);
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+		lv.setAdapter(adapter);
+
+		dialog.show();
 	}
 }

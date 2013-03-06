@@ -33,23 +33,23 @@ public class MapPos extends Fragment {
 		btnFloor4.setOnClickListener(btnFloorClickListener);
 
 		// // get an instance of FragmentTransaction from your Activity
-		 FragmentManager fragmentManager = getChildFragmentManager();
-		 FragmentTransaction fragmentTransaction = fragmentManager
-		 .beginTransaction();
-		
-		 // add a fragment
-		 Floor2 myFragment = new Floor2();
-		 System.out.println("999999999999999999999999999999999999999999999999999999999   " +fragmentManager.getBackStackEntryCount());
-//		 if(fragmentManager.getBackStackEntryCount()>1){
-//			 fragmentManager.popBackStack();
-//		 }
-		 fragmentTransaction.add(R.id.fmapcontainer, myFragment);
-		 fragmentTransaction.addToBackStack(null);
-		 fragmentTransaction.commit();
+		FragmentManager fragmentManager = getFragmentManager();
+		FragmentTransaction fragmentTransaction = fragmentManager
+				.beginTransaction();
+
+		// add a fragment
+		Floor2 myFragment = new Floor2();
+		System.out
+				.println("999999999999999999999999999999999999999999999999999999999   "
+						+ fragmentManager.getBackStackEntryCount());
+		// if(fragmentManager.getBackStackEntryCount()>1){
+		// fragmentManager.popBackStack();
+		// }
+		fragmentTransaction.add(R.id.fmapcontainer, myFragment);
+		fragmentTransaction.addToBackStack(null);
+		fragmentTransaction.commit();
 		return mapLayout;
 	}
-
-	
 
 	Button.OnClickListener btnFloorClickListener = new Button.OnClickListener() {
 		@Override
@@ -61,7 +61,7 @@ public class MapPos extends Fragment {
 			case R.id.btnFloor1:
 
 				mapFloorFragemnt = new Floor1();
-				
+
 				break;
 			case R.id.btnFloor2:
 				mapFloorFragemnt = new Floor2();
@@ -77,10 +77,10 @@ public class MapPos extends Fragment {
 				break;
 			}
 			// Create new transaction
-			FragmentManager fragmentManager = getChildFragmentManager();
-//			if (fragmentManager.getBackStackEntryCount() > 1) {
-//				fragmentManager.popBackStack();
-//			}
+			FragmentManager fragmentManager = getFragmentManager();
+			// if (fragmentManager.getBackStackEntryCount() > 1) {
+			// fragmentManager.popBackStack();
+			// }
 
 			FragmentTransaction fragmentTransaction = fragmentManager
 					.beginTransaction();

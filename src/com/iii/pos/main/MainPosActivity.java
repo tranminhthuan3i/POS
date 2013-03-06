@@ -14,8 +14,7 @@ import com.iii.pos.common.Header_Pos;
 import com.iii.pos.invoice.InvoicePos;
 import com.iii.pos.invoice.Invoice_Detail_PosActivity;
 import com.iii.pos.item.Category_Item_PosActivity;
-import com.iii.pos.map.Floor1;
-import com.iii.pos.map.Floor2;
+import com.iii.pos.map.MapFragment;
 import com.iii.pos.map.MapPos;
 
 public class MainPosActivity extends FragmentActivity implements
@@ -61,6 +60,10 @@ public class MainPosActivity extends FragmentActivity implements
 		case 4:
 			// doing in the Login_out
 			login_out(v.getContext());
+			break;
+		case 5:
+			// doing in the Login_out
+			myBodyFragemnt = new MapFragment();
 			break;
 
 		default:

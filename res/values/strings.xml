@@ -11,13 +11,25 @@
     <string name="invoicetimeout">Time Out   \u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020  </string>
     <string name="titleinvoice">REPORT LIST OF ITEMS</string>
     <string name="invoiceaddress">Address  \u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020</string>
-	<string name="invoicephone">Phone  \u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020</string>
-    
-    
+    <string name="invoicephone">Phone  \u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020</string>
+
     <!-- The Menu String -->
     <string name="table_map_menu">Table Map</string>
     <string name="invoice_menu">Invoice</string>
     <string name="setting_menu">Settings</string>
+    <string name="strackingmap">GoogleMap</string>
     <string name="login_out">Sign In</string>
+    <!-- Buttonn String -->
+    <string name="btnConnectIPAddress">Connect</string>
+    <string name="btnCancelIPAddress">Cancel</string>
+
+    <!-- Info Company III -->
+
+    <string name="CompanyName">CÔNG TY TNHH MỘT THÀNH VIÊN CÔNG NGHỆ VÀ TRUYỀN THÔNG 3I</string>
+    <string name="CompanyAaddress">Địa chỉ: Nhà B1-4 Khu đô thị Hạ Đình - Thanh Xuân - Hà Nội</string>
+    <string name="CompanyPhone">Điện thoại: 04. 6292 6186 \t\t 04.6285 0844  \n\t\t\t 04.2214 6285 \t\t 04.6285 0842</string>
+    <string name="CompanyFax">Fax: 04 6285 0843</string>
+    <string name="CompanyEmail">Email: info@3i.com.vn</string>
+    <string name="CompanyNote">© Bản quyền thuộc Công ty TNHH Một Thành Viên Công Nghệ và Truyền Thông 3I</string>
 
 </resources>
