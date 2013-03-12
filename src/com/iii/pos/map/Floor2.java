@@ -20,15 +20,17 @@ public class Floor2 extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+
 		// TODO Auto-generated method stub
 		View mapFloorLayout = inflater.inflate(R.layout.floor1, container,
 				false);
-		// URLWebview = getResources().getString(R.string.poswebview);
-		webView = (WebView) mapFloorLayout.findViewById(R.id.webView1);
-		webView.loadUrl("http://3i.com.vn/pos/map/main/floor2.php?android_id=1"
-				/* + getAndroid_Id() */);
-		webView.getSettings().setJavaScriptEnabled(true);
-		
+		if (mapFloorLayout != null) {
+			// URLWebview = getResources().getString(R.string.poswebview);
+			webView = (WebView) mapFloorLayout.findViewById(R.id.webView1);
+			webView.loadUrl("http://3i.com.vn/pos/map/main/floor2.php?android_id=1"
+			/* + getAndroid_Id() */);
+			webView.getSettings().setJavaScriptEnabled(true);
+		}
 
 		return mapFloorLayout;
 	}

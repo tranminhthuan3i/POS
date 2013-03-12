@@ -1,15 +1,26 @@
 package com.iii.pos.common;
 
+import java.text.NumberFormat;
+import java.util.HashMap;
+import java.util.Locale;
+
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.iii.pos.R;
@@ -33,13 +44,15 @@ public class Header_Pos extends Fragment {
 	String strLanguage[] = { "Việt Nam", "English", "Trung Quốc", "Nhật",
 			"Singapore", "Lao", "Campuchia" };
 	// ---------callback for action--------------
-	OnHeadderSelectedListener mCallback;
+	OnHeaderSelectedListener mCallback;
 
 	// The container Activity must implement this interface so the frag can
 	// deliver messages
-	public interface OnHeadderSelectedListener {
+	public interface OnHeaderSelectedListener {
 		/** Called by HeadlinesFragment when a list item is selected */
 		public void onMenuButtonClick(int btnKey, View view);
+
+		public void updateLanguage(String languageKey, View view);
 	}
 
 	@Override
@@ -54,20 +67,15 @@ public class Header_Pos extends Fragment {
 			mCurrentPosition = savedInstanceState.getInt(ARG_POSITION);
 		}
 		ActionMenuItem languageItem = new ActionMenuItem(ID_LANGUAGE,
-				"Language", getResources().getDrawable(
-						R.drawable.menu_down_arrow));
+				"Language", getResources()
+						.getDrawable(R.drawable.menu_language));
 		ActionMenuItem currencyItem = new ActionMenuItem(ID_CURRENCY,
 				"Currency", getResources()
-						.getDrawable(R.drawable.menu_up_arrow));
+						.getDrawable(R.drawable.menu_currency));
 		ActionMenuItem serverItem = new ActionMenuItem(ID_SERVER, "SERVER",
-				getResources().getDrawable(R.drawable.menu_search));
+				getResources().getDrawable(R.drawable.menu_server));
 		ActionMenuItem infoItem = new ActionMenuItem(ID_INFO, "INFO",
 				getResources().getDrawable(R.drawable.menu_info));
-
-		// use setSticky(true) to disable QuickAction dialog being dismissed
-		// after an item is clicked
-		currencyItem.setSticky(true);
-		languageItem.setSticky(true);
 
 		// create QuickAction. Use QuickAction.VERTICAL or
 		// QuickAction.HORIZONTAL param to define layout
@@ -186,7 +194,7 @@ public class Header_Pos extends Fragment {
 		// This makes sure that the container activity has implemented
 		// the callback interface. If not, it throws an exception.
 		try {
-			mCallback = (OnHeadderSelectedListener) activity;
+			mCallback = (OnHeaderSelectedListener) activity;
 		} catch (ClassCastException e) {
 			throw new ClassCastException(activity.toString()
 					+ " must implement OnHeadlineSelectedListener");
@@ -222,17 +230,84 @@ public class Header_Pos extends Fragment {
 
 	}
 
+	String arrCurrency[] = { "VNĐ", "USD", "JPY" };
+
+	HashMap<String, String> hm;
+
 	private void createDialogSettingCurrency() {
-		final Dialog dialog = new Dialog(getActivity(),
-				android.R.style.Theme_NoTitleBar);
+		final Dialog dialog = new Dialog(getActivity());
+		dialog.setTitle("Currency");
+		dialog.setCancelable(true);
 		dialog.setContentView(R.layout.setting_currency);
 
-		ListView lv = (ListView) dialog.findViewById(R.id.lvCurrency);
+		Spinner currencyStart = (Spinner) dialog
+				.findViewById(R.id.CurrencyStart);
 
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
-				android.R.layout.simple_spinner_item, strCurrency);
+		ArrayAdapter<String> adapterStart = new ArrayAdapter<String>(
+				getActivity(), android.R.layout.simple_spinner_item,
+				arrCurrency);
+		adapterStart
+				.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-		lv.setAdapter(adapter);
+		currencyStart.setAdapter(adapterStart);
+
+		final Spinner currencyEnd = (Spinner) dialog
+				.findViewById(R.id.CurrencyEnd);
+
+		ArrayAdapter<String> adapterEnd = new ArrayAdapter<String>(
+				getActivity(), android.R.layout.simple_spinner_item,
+				arrCurrency);
+		adapterEnd
+				.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+		currencyEnd.setAdapter(adapterEnd);
+
+		hm = new HashMap<String, String>();
+		hm.put("VNĐ", "1");
+		hm.put("USD", "20.5");
+		hm.put("JPY", "224.48");
+
+		final TextView CurrencyResult = (TextView) dialog
+				.findViewById(R.id.CurrencyResult);
+
+		final EditText textStart = (EditText) dialog
+				.findViewById(R.id.textStart);
+
+		Button btnConvert = (Button) dialog.findViewById(R.id.btnConvert);
+
+		btnConvert.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				String textStart_1 = textStart.getText().toString();
+
+				if (!textStart_1.equals("")) {
+					float unit = 0;
+
+					unit = Float.parseFloat(textStart_1);
+					String item = currencyEnd.getSelectedItem().toString();
+
+					float curren = Float.parseFloat(hm.get(item));
+
+					CurrencyResult.setText(displayCurrency(Locale.US,
+							(unit / curren)));
+
+				} else {
+					Toast.makeText(getActivity(), "Nhập Số", Toast.LENGTH_LONG)
+							.show();
+					textStart.requestFocus();
+				}
+			}
+		});
+
+		Button btnCancel = (Button) dialog.findViewById(R.id.btnCancel);
+		btnCancel.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				dialog.dismiss();
+			}
+		});
 
 		dialog.show();
 	}
@@ -245,20 +320,63 @@ public class Header_Pos extends Fragment {
 		dialog.show();
 	}
 
-	private void createDialogSettingLanguage() {
-		final Dialog dialog = new Dialog(getActivity(),
-				android.R.style.Theme_Translucent_NoTitleBar);
-		dialog.setContentView(R.layout.setting_language);
-		dialog.setTitle("Language ");
+	private String[] languages = { "French", "English" };
 
-		ListView lv = (ListView) dialog.findViewById(R.id.lvLanguage);
+	private void createDialogSettingLanguage() {
+		final Dialog dialog = new Dialog(getActivity());
+		dialog.setContentView(R.layout.listlanguage_pos);
+		dialog.setTitle("Language  ");
+
+		System.out.println("1111111111111111111111111111111111");
+		ListView lv = (ListView) dialog.findViewById(R.id.listviewlanguage);
 
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
-				android.R.layout.simple_spinner_item, strLanguage);
-		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+				android.R.layout.simple_list_item_1, languages);
+		lv.setOnItemClickListener(new OnItemClickListener() {
 
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+					long arg3) {
+				// TODO Auto-generated method stub
+				System.out.println("222222222222222222222" + arg2);
+				Configuration config = new Configuration();
+				switch (arg2) {
+				case 0:
+					Toast.makeText(getActivity().getBaseContext(), "abc",
+							Toast.LENGTH_SHORT).show();
+					config.locale = Locale.ENGLISH;
+					mCallback.updateLanguage("ENGLISH", getView());
+					dialog.dismiss();
+					break;
+				case 1:
+					config.locale = Locale.FRENCH;
+					Toast.makeText(getActivity().getBaseContext(), "xxx",
+							Toast.LENGTH_SHORT).show();
+					mCallback.updateLanguage("FRENCH", getView());
+					dialog.dismiss();
+					break;
+				default:
+					config.locale = Locale.FRENCH;
+					break;
+
+				}
+				getActivity().getResources().updateConfiguration(config, null);
+//				startActivity(new Intent(getActivity().getBaseContext(),
+//						TextActivity.class));
+			}
+		});
 		lv.setAdapter(adapter);
-
 		dialog.show();
+
+	}
+
+	static public String displayCurrency(Locale currentLocale, float unit) {
+		// Double currency = new Double(34);
+		NumberFormat currencyFormatter;
+		String currencyOut;
+
+		currencyFormatter = NumberFormat.getCurrencyInstance(currentLocale);
+		currencyOut = currencyFormatter.format(unit);
+		return currencyOut;
 	}
 }

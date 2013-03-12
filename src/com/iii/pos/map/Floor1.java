@@ -22,21 +22,39 @@ public class Floor1 extends Fragment {
 		// TODO Auto-generated method stub
 		View mapFloorLayout = inflater.inflate(R.layout.floor1, container,
 				false);
-		// URLWebview = getResources().getString(R.string.poswebview);
-		webView = (WebView) mapFloorLayout.findViewById(R.id.webView1);
-		webView.loadUrl("http://3i.com.vn/pos/map/main/floor1.php?android_id=1"/*+ getAndroid_Id()*/);
-		webView.getSettings().setJavaScriptEnabled(true);
-		
-				
+		if (mapFloorLayout != null) {
+			// URLWebview = getResources().getString(R.string.poswebview);
+			webView = (WebView) mapFloorLayout.findViewById(R.id.webView1);
+//			webView.loadUrl("http://3i.com.vn/pos/map/main/floor1.php?android_id=1"/*
+//																					 * +
+//																					 * getAndroid_Id
+//																					 * (
+//																					 * )
+//																					 */);
+			
+			//webView.loadUrl("http://192.168.1.228/FlipboardPageLayout/index.html");
+			webView.loadUrl("http://localhost/dom.php");
+			
+			webView.getSettings().setJavaScriptEnabled(true);
+		}
 
 		return mapFloorLayout;
 	}
 
-//	private String getAndroid_Id() {
-//		TelephonyManager tManager = (TelephonyManager) getView().getContext()
-//				.getSystemService(Context.TELEPHONY_SERVICE);
-//		String uid = tManager.getDeviceId();
-//		return uid;
-//	}
+	@Override
+	public void onDestroyView() {
+		super.onDestroyView();
+//		ViewGroup parentViewGroup = (ViewGroup) this.getR.getParent();
+//		if (null != parentViewGroup) {
+//			parentViewGroup.removeView(mRoutesSearchViewContainer);
+//		}
+	}
+
+	// private String getAndroid_Id() {
+	// TelephonyManager tManager = (TelephonyManager) getView().getContext()
+	// .getSystemService(Context.TELEPHONY_SERVICE);
+	// String uid = tManager.getDeviceId();
+	// return uid;
+	// }
 
 }

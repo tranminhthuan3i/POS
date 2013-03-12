@@ -17,16 +17,16 @@
         android:orientation="vertical" >
 
         <Button
-           android:id="@+id/btnFloor1"
-           android:layout_marginTop="10dip"
+            android:id="@+id/btnFloor1"
             android:layout_width="76dp"
             android:layout_height="45dip"
             android:layout_gravity="center"
             android:layout_marginBottom="10dip"
+            android:layout_marginTop="10dip"
             android:background="@drawable/buttonbackground"
             android:minWidth="100sp"
             android:onClick="menuButtonClick"
-            android:text="  Floor1  "
+            android:text="@string/floor1"
             android:textStyle="bold" />
 
         <Button
@@ -38,7 +38,7 @@
             android:background="@drawable/buttonbackground"
             android:minWidth="100sp"
             android:onClick="menuButtonClick"
-            android:text="  Floor2  "
+            android:text="@string/floor2"
             android:textStyle="bold" />
 
         <Button
@@ -50,7 +50,7 @@
             android:background="@drawable/buttonbackground"
             android:minWidth="100sp"
             android:onClick="menuButtonClick"
-            android:text="  Floor3  "
+            android:text="@string/floor3"
             android:textStyle="bold" />
 
         <Button
@@ -62,7 +62,7 @@
             android:background="@drawable/buttonbackground"
             android:minWidth="100sp"
             android:onClick="menuButtonClick"
-            android:text="  Floor4  "
+            android:text="@string/floor4"
             android:textStyle="bold" />
     </LinearLayout>
 

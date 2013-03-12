@@ -32,4 +32,18 @@
     <string name="CompanyEmail">Email: info@3i.com.vn</string>
     <string name="CompanyNote">© Bản quyền thuộc Công ty TNHH Một Thành Viên Công Nghệ và Truyền Thông 3I</string>
 
+    <!-- Currency -->
+    <string name="convertTo">Convert To\n>></string>
+    <string name="Unit">Unit : </string>
+    <string name="Result">Result : </string>
+    <string name="Convert">Convert</string>
+    <string name="Cancel">Cancel</string>
+
+    <!-- Map -->
+
+    <string name="floor1">\u0020\u0020\u0020 Floor1 \u0020\u0020\u0020 </string>
+    <string name="floor2">\u0020\u0020\u0020 Floor2 \u0020\u0020\u0020 </string>
+    <string name="floor3">\u0020\u0020\u0020 Floor3 \u0020\u0020\u0020</string>
+    <string name="floor4">\u0020\u0020\u0020 Floor4 \u0020\u0020\u0020</string>
+
 </resources>

@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
 
 import com.iii.pos.R;
 
@@ -45,10 +44,12 @@ public class MapPos extends Fragment {
 		// if(fragmentManager.getBackStackEntryCount()>1){
 		// fragmentManager.popBackStack();
 		// }
-		fragmentTransaction.add(R.id.fmapcontainer, myFragment);
+		fragmentTransaction.add(R.id.fmapcontainer, myFragment, "tagc");
 		fragmentTransaction.addToBackStack(null);
 		fragmentTransaction.commit();
+
 		return mapLayout;
+
 	}
 
 	Button.OnClickListener btnFloorClickListener = new Button.OnClickListener() {
@@ -99,5 +100,4 @@ public class MapPos extends Fragment {
 			fragmentTransaction.commit();
 		}
 	};
-
 }

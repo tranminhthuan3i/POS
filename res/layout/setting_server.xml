@@ -5,7 +5,7 @@
     android:background="@android:color/darker_gray"
     android:gravity="left"
     android:orientation="vertical"
-    android:padding="10.0dip" >
+    android:padding="20.0dip" >
 
     <EditText
         android:id="@+id/textIPAddress"
@@ -23,7 +23,7 @@
 
         <Button
             android:id="@+id/btnConnect"
-            android:layout_width="wrap_content"
+            android:layout_width="150.0dip"
             android:layout_height="wrap_content"
             android:background="@drawable/login_loginbutton"
             android:padding="15.0dip"
@@ -31,7 +31,7 @@
 
         <Button
             android:id="@+id/btnCancel"
-            android:layout_width="wrap_content"
+            android:layout_width="150.0dip"
             android:layout_height="wrap_content"
             android:background="@drawable/login_loginbutton"
             android:padding="15.0dip"

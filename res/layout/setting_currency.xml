@@ -1,16 +1,151 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@android:color/darker_gray"
+    android:layout_width="500.0dip"
+    android:layout_height="400.0dip"
+    android:background="@drawable/login_loginbutton"
+    android:gravity="center"
     android:orientation="vertical" >
 
-    
-    <ListView
-        android:id="@+id/lvCurrency"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
-    </ListView>
-    
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30.0dip"
+        android:layout_marginRight="30.0dip"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="3" >
+
+        <Spinner
+            android:id="@+id/CurrencyStart"
+            android:layout_width="0.0dip"
+            android:layout_height="40.0dip"
+            android:layout_weight="1"
+            android:background="@drawable/buttonbackground"
+            android:clickable="false"
+            android:gravity="center"
+            android:paddingLeft="50.0dip" />
+
+        <TextView
+            android:layout_width="0.0dip"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/convertTo"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/CurrencyEnd"
+            android:layout_width="0.0dip"
+            android:layout_height="40.0dip"
+            android:layout_weight="1"
+            android:background="@drawable/buttonbackground"
+            android:gravity="center"
+            android:paddingLeft="50.0dip" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1.0dip"
+        android:background="@color/background_1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="20.0dip" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:text="@string/Unit"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/textStart"
+            android:layout_width="0.0dip"
+            android:layout_height="40.0dip"
+            android:layout_weight="4"
+            android:background="@drawable/post_edittext"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            android:maxLength="12" />
+
+        <TextView
+            android:id="@+id/CurrencyUnit_Start"
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:gravity="center" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="20.0dip" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:text="@string/Result"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/CurrencyResult"
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="4.5"
+            android:ems="10"
+            android:textColor="@color/background_1"
+            android:textSize="30.0dip"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/CurrencyUnit_End"
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:ems="10"
+            android:gravity="center" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1.0dip"
+        android:background="@color/background_1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" 
+        android:paddingTop="20.0dip"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btnConvert"
+            android:layout_width="150.0dip"
+            android:layout_height="wrap_content"
+            android:background="@drawable/login_loginbutton"
+            android:padding="15.0dip"
+            android:text="@string/Convert"
+            android:textStyle="bold" />
+        
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="150.0dip"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30.0dip"
+            android:background="@drawable/login_loginbutton"
+            android:padding="15.0dip"
+            android:text="@string/Cancel"
+            android:textStyle="bold" />
+    </LinearLayout>
 
 </LinearLayout>

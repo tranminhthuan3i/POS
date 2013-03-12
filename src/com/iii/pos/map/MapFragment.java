@@ -26,7 +26,11 @@ public class MapFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		return (new FrameLayout(getActivity()));
+		View v = null;
+		if (map == null) {
+			v = new FrameLayout(getActivity());
+		}
+		return v;
 	}
 
 	@Override

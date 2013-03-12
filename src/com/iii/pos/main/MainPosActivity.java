@@ -1,16 +1,23 @@
 package com.iii.pos.main;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
+import android.widget.Button;
 
 import com.iii.pos.R;
 import com.iii.pos.common.Header_Pos;
+import com.iii.pos.config.ConfigurationWS;
 import com.iii.pos.invoice.InvoicePos;
 import com.iii.pos.invoice.Invoice_Detail_PosActivity;
 import com.iii.pos.item.Category_Item_PosActivity;
@@ -18,12 +25,20 @@ import com.iii.pos.map.MapFragment;
 import com.iii.pos.map.MapPos;
 
 public class MainPosActivity extends FragmentActivity implements
-		Header_Pos.OnHeadderSelectedListener {
+		Header_Pos.OnHeaderSelectedListener {
+
+	private boolean login = true;
+	private ConfigurationWS mWS;
+	String URL = "";
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main_pos);
+
+		// ------------------creating the ws------------------------//
+		mWS = new ConfigurationWS(this);
+		URL = getResources().getString(R.string.loginWS);
 		// Create new transaction
 		FragmentManager fragmentManager = getSupportFragmentManager();
 		fragmentManager.popBackStack();
@@ -38,11 +53,35 @@ public class MainPosActivity extends FragmentActivity implements
 		fragmentTransaction.addToBackStack(null);
 		// Commit the transaction
 		fragmentTransaction.commit();
-		login_out(getApplicationContext());
+		login_out(this);
+
+	}
+
+	private void putDataLogin() {
+
+		// update croped image
+		JSONObject json = new JSONObject();
+		try {
+			json.put("username", "tranminhthuan");
+
+			json.put("pass", "123456");
+
+			JSONArray jarr = mWS.connectWSPut_Get_Data(URL, json, "posts");
+
+			for (int i = 0; i < jarr.length(); i++) {
+				JSONObject element = jarr.getJSONObject(i);				
+				String result = element.getString("result");				
+			}
+
+		} catch (JSONException e) { // TODO Auto-generated catch
+									// block
+			e.printStackTrace();
+		}
+
 	}
 
 	@Override
-	public void onMenuButtonClick(int btnKey,View v) {
+	public void onMenuButtonClick(int btnKey, View v) {
 		// TODO Auto-generated method stub
 		Fragment myBodyFragemnt = null;
 		switch (btnKey) {
@@ -115,45 +154,33 @@ public class MainPosActivity extends FragmentActivity implements
 	}
 
 	private void login_out(Context context) {
+		login = !login;
 		final Dialog dialog = new Dialog(context);
 		dialog.setTitle("User Login");
 		dialog.setContentView(R.layout.login_pos);
+		Button btnLogin = (Button) dialog.findViewById(R.id.btnLogin);
+		btnLogin.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				putDataLogin();
+			}
+		});
 		dialog.setCancelable(true);
-		/*
-		 * Button btnStart = (Button) dialog.findViewById(R.id.btnStart);
-		 * btnStart.setOnClickListener(new View.OnClickListener() {
-		 * 
-		 * @Override public void onClick(View v) {
-		 * 
-		 * 
-		 * UpdataUserInit up = new UpdataUserInit(); up.execute();
-		 * 
-		 * new playSound(getApplicationContext()).playButton(); // show right
-		 * layout
-		 * 
-		 * // icon_me.setImageResource(R.drawable.temp_thumbnail_mimirin);
-		 * ShowMap_Activity.sex = 0;
-		 * 
-		 * updateSex(); dialog.dismiss(); Message msg = handler.obtainMessage();
-		 * handler.sendMessage(msg);
-		 * 
-		 * } });
-		 * 
-		 * ImageView btnThoat = (ImageView) dialog.findViewById(R.id.btnThoat);
-		 * btnThoat.setOnClickListener(new View.OnClickListener() {
-		 * 
-		 * @Override public void onClick(View v) { new
-		 * playSound(getApplicationContext()).playButton(); // show right layout
-		 * 
-		 * ShowMap_Activity.sex = 1;
-		 * 
-		 * updateSex(); dialog.dismiss(); // Message msg =
-		 * handler.obtainMessage(); // handler.sendMessage(msg); } });
-		 */
 		try {
 			dialog.show();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
+	}
+
+	@Override
+	public void updateLanguage(String languageKey, View view) {
+		// TODO Auto-generated method stub
+		Intent t = new Intent(this, MainPosActivity.class);
+		startActivity(t);
+		this.finish();
 	}
 }

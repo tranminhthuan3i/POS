@@ -46,19 +46,11 @@
             android:screenOrientation="landscape"
             android:theme="@android:style/Theme.Black.NoTitleBar" >
         </activity>
-        <activity
-            android:name="com.iii.pos.map.Floor2"
-            android:screenOrientation="landscape"
-            android:theme="@android:style/Theme.Black.NoTitleBar" >
-        </activity>
-        <activity
-            android:name="com.iii.pos.map.Floor1"
-            android:screenOrientation="landscape"
-            android:theme="@android:style/Theme.Black.NoTitleBar" >
-        </activity>
         
-        <activity
-            android:name="com.iii.pos.invoice.InvoicePos"
+        
+      
+         <activity
+            android:name="com.iii.pos.common.TextActivity"
             android:screenOrientation="landscape"
             android:theme="@android:style/Theme.Black.NoTitleBar" >
         </activity>
