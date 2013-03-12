@@ -19,6 +19,8 @@ import com.iii.pos.adapter.Adapter_List_Dishes;
 import com.iii.pos.adapter.Adapter_list_Category;
 import com.iii.pos.model.AdapterThuan;
 
+
+//-----------add to right menu on main activity--------//
 public class Category_Item_PosActivity extends Fragment {
 
 	private ListView lv;

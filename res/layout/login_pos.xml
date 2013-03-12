@@ -36,7 +36,7 @@
             android:orientation="vertical" >
 
             <EditText
-                android:id="@+id/edtUsername"
+                android:id="@+id/loginusername"
                 android:layout_width="300dip"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="30dp"
@@ -55,7 +55,7 @@
                 android:textStyle="italic" />
 
             <EditText
-                android:id="@+id/edtPassword"
+                android:id="@+id/loginpass"
                 android:layout_width="300dip"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="30dp"
@@ -88,14 +88,14 @@
                 android:textColor="#000" />
 
             <Button
-                android:id="@+id/btnRegist"
+                android:id="@+id/btnExit"
                 android:layout_width="100dip"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="30dp"
                 android:layout_weight="1"
                 android:background="@drawable/login_loginbutton"
                 android:padding="10dp"
-                android:text="Đăng ký"
+                android:text="  Thoát  "
                 android:textColor="#000" />
         </LinearLayout>
 

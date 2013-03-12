@@ -55,7 +55,7 @@ public class Footer_Pos extends Fragment {
 		// animationToRight.setRepeatMode(Animation.RESTART);
 		// animationToRight.setRepeatCount(Animation.INFINITE);
 		//
-		_tvTime = (TextView) footerLayout.findViewById(R.id.usernameanim);
+		_tvTime = (TextView) footerLayout.findViewById(R.id.usernamestatus);
 		//
 		// textViewMarqToLeft.setAnimation(animationToLeft);
 		// textViewMarqToRight.setAnimation(animationToRight);

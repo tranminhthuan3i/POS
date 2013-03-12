@@ -1,5 +1,6 @@
 package com.iii.pos.invoice;
 
+//-----invoice model-------//
 public class Invoice_Detail {
 
 	private int inv_id;

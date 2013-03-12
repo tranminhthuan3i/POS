@@ -12,11 +12,15 @@ import android.webkit.WebView;
 
 import com.iii.pos.R;
 
+
+//--------------this class use to display the map for restaurant---------//
 public class Floor2 extends Fragment {
+	
+	//--------------------Fields ---------------------------------//
 	private WebView webView;
 	private String URLWebview = "";
 
-	// Context context=MyFragment.this;
+	//---------------------initialize method---------------------------//
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {

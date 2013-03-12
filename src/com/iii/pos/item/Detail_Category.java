@@ -1,5 +1,6 @@
 package com.iii.pos.item;
 
+//----model category object----//
 public class Detail_Category {
 	private int ctegory_id;
 	private String name;

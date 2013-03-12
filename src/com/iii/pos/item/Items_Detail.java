@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.content.Context;
 
+//----model item object----//
 public class Items_Detail{
 
 	String _id;

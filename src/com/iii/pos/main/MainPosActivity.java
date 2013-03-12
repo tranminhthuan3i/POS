@@ -1,5 +1,8 @@
 package com.iii.pos.main;
 
+import java.text.DateFormat;
+import java.util.Date;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -8,12 +11,17 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.iii.pos.R;
 import com.iii.pos.common.Header_Pos;
@@ -27,10 +35,14 @@ import com.iii.pos.map.MapPos;
 public class MainPosActivity extends FragmentActivity implements
 		Header_Pos.OnHeaderSelectedListener {
 
-	private boolean login = true;
+	// --------------------Fields-----------------------------//
 	private ConfigurationWS mWS;
-	String URL = "";
+	private String URL = "";
+	private View footer = null;
+	private int exit = 0;
+	private Dialog dialog;
 
+	// -----------------initialize--------------------------//
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -39,6 +51,9 @@ public class MainPosActivity extends FragmentActivity implements
 		// ------------------creating the ws------------------------//
 		mWS = new ConfigurationWS(this);
 		URL = getResources().getString(R.string.loginWS);
+
+		footer = (View) findViewById(R.id.footer_Pos_Fragment);
+
 		// Create new transaction
 		FragmentManager fragmentManager = getSupportFragmentManager();
 		fragmentManager.popBackStack();
@@ -54,32 +69,43 @@ public class MainPosActivity extends FragmentActivity implements
 		// Commit the transaction
 		fragmentTransaction.commit();
 		login_out(this);
-
+		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+				.permitAll().build();
+		StrictMode.setThreadPolicy(policy);
 	}
 
-	private void putDataLogin() {
-
+	// ----------------use to post and get data ------------------//
+	private boolean putDataLogin(String username, String pass) {
+		boolean ok = false;
 		// update croped image
 		JSONObject json = new JSONObject();
 		try {
-			json.put("username", "tranminhthuan");
+			json.put("username", username);
 
-			json.put("pass", "123456");
+			json.put("pass", pass);
 
 			JSONArray jarr = mWS.connectWSPut_Get_Data(URL, json, "posts");
 
-			for (int i = 0; i < jarr.length(); i++) {
-				JSONObject element = jarr.getJSONObject(i);				
-				String result = element.getString("result");				
+			if (jarr != null) {
+				for (int i = 0; i < jarr.length(); i++) {
+					JSONObject element = jarr.getJSONObject(i);
+					String result = element.getString("result1");
+					if (result.equals("success")) {
+						ok = true;
+						return ok;
+					}
+				}
 			}
 
 		} catch (JSONException e) { // TODO Auto-generated catch
 									// block
 			e.printStackTrace();
 		}
+		return ok;
 
 	}
 
+	// ----------------Callback method from Header setting-------------//
 	@Override
 	public void onMenuButtonClick(int btnKey, View v) {
 		// TODO Auto-generated method stub
@@ -99,6 +125,14 @@ public class MainPosActivity extends FragmentActivity implements
 		case 4:
 			// doing in the Login_out
 			login_out(v.getContext());
+			Button btnLogin_out = (Button) v.findViewById(R.id.btnLogin_Out);
+			btnLogin_out.setText(R.string.login_out);
+			btnLogin_out.setCompoundDrawablesWithIntrinsicBounds(
+					R.drawable.menu_icon_login, 0, 0, 0);
+			// --------------change img to login------//
+			TextView footerText = (TextView) footer
+					.findViewById(R.id.usernamestatus);
+			footerText.setText("USER:                --- LOGIN TIME: 00:00:00");
 			break;
 		case 5:
 			// doing in the Login_out
@@ -145,42 +179,99 @@ public class MainPosActivity extends FragmentActivity implements
 		// fragmentTransaction
 	}
 
+	// -------------------processing before breack----------------//
 	@Override
 	public void onBackPressed() {
 		// TODO Auto-generated method stub
+
 		FragmentManager fragmentManager = getSupportFragmentManager();
 		fragmentManager.popBackStack();
 		super.onBackPressed();
 	}
 
+	// ---------Called when user pressed login--------------------//
 	private void login_out(Context context) {
-		login = !login;
-		final Dialog dialog = new Dialog(context);
+		dialog = new Dialog(context);
 		dialog.setTitle("User Login");
 		dialog.setContentView(R.layout.login_pos);
+		dialog.setCancelable(false);
 		Button btnLogin = (Button) dialog.findViewById(R.id.btnLogin);
 		btnLogin.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				putDataLogin();
+				EditText ename = (EditText) dialog
+						.findViewById(R.id.loginusername);
+				final String username = ename.getText().toString();
+
+				EditText epass = (EditText) dialog.findViewById(R.id.loginpass);
+				final String pass = epass.getText().toString();
+
+				if (putDataLogin(username, pass)) {
+					Toast.makeText(MainPosActivity.this, "Login success",
+							Toast.LENGTH_SHORT).show();
+					// change img icon on button login to logout
+					View header = (View) findViewById(R.id.headerMenuFragment);
+					Button btnLogin_out = (Button) header
+							.findViewById(R.id.btnLogin_Out);
+					btnLogin_out.setText("Logout");
+					btnLogin_out.setCompoundDrawablesWithIntrinsicBounds(
+							R.drawable.menu_icon_logout, 0, 0, 0);
+					// login to change status on the footer pos
+
+					String currentDateTimeString = DateFormat
+							.getDateTimeInstance().format(new Date());
+					TextView footerText = (TextView) footer
+							.findViewById(R.id.usernamestatus);
+					// textView is the TextView view that should display it
+					footerText.setText("USER: " + username.toUpperCase()
+							+ "--- LOGIN TIME: "
+							+ currentDateTimeString.toUpperCase());
+					dialog.dismiss();
+
+				} else
+					Toast.makeText(MainPosActivity.this,
+							"Fault please try again", Toast.LENGTH_SHORT)
+							.show();
 			}
 		});
-		dialog.setCancelable(true);
+		Button btnExit = (Button) dialog.findViewById(R.id.btnExit);
+		btnExit.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				if (dialog != null) {
+					dialog.dismiss();
+				}
+				onBackPressed();
+				onBackPressed();
+			}
+		});
+
 		try {
 			dialog.show();
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 	}
 
+	// -------------update language----------------------------//
 	@Override
 	public void updateLanguage(String languageKey, View view) {
 		// TODO Auto-generated method stub
 		Intent t = new Intent(this, MainPosActivity.class);
 		startActivity(t);
 		this.finish();
+	}
+
+	@Override
+	public void onDestroy() {
+		super.onDestroy();
+		System.gc();
+		finish();
 	}
 }

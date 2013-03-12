@@ -19,10 +19,15 @@ import com.iii.pos.R;
  * @author tran minh thuan
  * 
  */
+
+//--------------this class constaint google map -----------------//
 public class MapFragment extends Fragment {
+	
+	//----------------Fields -----------------------------------//
 	private MapView map = null;
 	private MyLocationOverlay me = null;
 
+	//---------------initialize method---------------------------//
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -33,6 +38,7 @@ public class MapFragment extends Fragment {
 		return v;
 	}
 
+	//---------------initialize method---------------------------//
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);

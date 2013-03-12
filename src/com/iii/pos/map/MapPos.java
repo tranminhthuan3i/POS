@@ -11,7 +11,10 @@ import android.widget.Button;
 
 import com.iii.pos.R;
 
+//-------------this class consist multiple floors--------------------//
 public class MapPos extends Fragment {
+	
+	//-------------------initialize method---------------------------//
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -52,6 +55,7 @@ public class MapPos extends Fragment {
 
 	}
 
+	//----------------selection button floors--------------------------------//
 	Button.OnClickListener btnFloorClickListener = new Button.OnClickListener() {
 		@Override
 		public void onClick(View v) {
