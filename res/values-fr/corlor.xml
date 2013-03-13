@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<color name = "bgfooter">#BBBBBB</color>
+	<color name = "fragmentleft">#DDDDDD</color>
+	<color name="header">#ff445374</color>
+    <color name="background">#A0A8B8</color>
+    <color name="background_1">#717C94</color>
+    <color name="app_background">#fff5f5f5</color>
+    <color name="light_red">#ba0305</color>
+    <color name="dark_red">#9d0c0f</color>
+    <color name="text_tab_selected">#5d5d5d</color>
+    <color name="text_tab_unselected">#838183</color>
+    <color name="green">#82d24b</color>
+    <color name="white">#ffffff</color>
+    <color name="btn_scan_background">#afafaf</color>
+</resources>

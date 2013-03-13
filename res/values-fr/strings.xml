@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">POS</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Cài đặt</string>
+    <!-- User String -->
+    <string name="username">Tên người dùng \u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020  </string>
+    <string name="invoicecode">Mã hóa đơn \u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020  </string>
+    <string name="invoicetimein">Thời gian ở    \u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020  </string>
+    <string name="invoicetimeout">Thời gian đi   \u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020  </string>
+    <string name="titleinvoice">Báo cáo danh mục mặt hàng</string>
+    <string name="invoiceaddress">Địa chỉ  \u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020</string>
+	<string name="invoicephone">Số điện thoại  \u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020</string>
+    
+    
+    <!-- The Menu String -->
+    <string name="table_map_menu">Bản đồ</string>
+    <string name="invoice_menu">Hóa đơn</string>
+    <string name="setting_menu">Cài đặt</string>
+    <string name="login_out">Đăng nhập</string>
+
+    <!-- them -->
+	<string name="OK">Đồng ý</string>
+    <string name="Cancel">Hủy bỏ</string>
+    
+     <string name="name_item">Tên mục</string>
+    <string name="unit">Đơn vị</string>
+    <string name="amount">Số lượng</string>
+    <string name="Cost">Giá tiền</string>
+    <string name="Notes">Ghi chú</string>
+    
+       <!-- Map -->
+
+    <string name="floor1">\u0020\u0020\u0020 Tầng \u0020 1 \u0020\u0020\u0020 </string>
+    <string name="floor2">\u0020\u0020\u0020 Tầng \u0020 2 \u0020\u0020\u0020 </string>
+    <string name="floor3">\u0020\u0020\u0020 Tầng \u0020 3 \u0020\u0020\u0020</string>
+    <string name="floor4">\u0020\u0020\u0020 Tầng \u0020 4 \u0020\u0020\u0020</string>
+</resources>

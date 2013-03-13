@@ -244,7 +244,6 @@ public final class R {
         public static final int temp_listcategory=0x7f030019;
         public static final int temp_listinvoice=0x7f03001a;
         public static final int temp_listitem=0x7f03001b;
-        public static final int text_layout=0x7f03001c;
     }
     public static final class menu {
         public static final int activity_main_pos=0x7f090000;

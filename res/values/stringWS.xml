@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="loginWS">http://192.168.1.68/pos/wslogin.php</string>
+
+</resources>
