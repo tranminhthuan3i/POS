@@ -19,7 +19,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.iii.pos.R;
-import com.iii.pos.item.Detail_Items;
+import com.iii.pos.model.Detail_Items;
 
 public class Adapter_List_Dishes extends ArrayAdapter<Detail_Items> implements
 		TextWatcher {

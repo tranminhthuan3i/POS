@@ -18,7 +18,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.iii.pos.R;
-import com.iii.pos.invoice.Invoice_Detail;
+import com.iii.pos.model.Invoice_Detail;
 
 //-----------custom the listview-------------------//
 public class AdapterListInvoice extends ArrayAdapter<Invoice_Detail> {

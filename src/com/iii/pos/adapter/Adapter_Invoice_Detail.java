@@ -13,7 +13,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.iii.pos.R;
-import com.iii.pos.invoice.Invoice_Detail_1;
+import com.iii.pos.model.Invoice_Detail_1;
 
 public class Adapter_Invoice_Detail extends ArrayAdapter<Invoice_Detail_1> {
 

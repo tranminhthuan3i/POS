@@ -1,4 +1,4 @@
-package com.iii.pos.item;
+package com.iii.pos.model;
 
 //----model item object----//
 public class Detail_Items {

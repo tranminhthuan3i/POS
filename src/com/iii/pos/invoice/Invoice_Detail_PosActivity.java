@@ -14,8 +14,9 @@ import com.iii.pos.R;
 import com.iii.pos.adapter.Adapter_Invoice_Detail;
 import com.iii.pos.adapter.Adapter_List_Dishes;
 import com.iii.pos.adapter.Adapter_list_Category;
-import com.iii.pos.item.Detail_Category;
-import com.iii.pos.item.Detail_Items;
+import com.iii.pos.model.Detail_Category;
+import com.iii.pos.model.Detail_Items;
+import com.iii.pos.model.Invoice_Detail_1;
 
 public class Invoice_Detail_PosActivity extends Fragment {
 

@@ -1,4 +1,4 @@
-package com.iii.pos.invoice;
+package com.iii.pos.model;
 
 //--------model invoice-------//
 public class Invoice_Detail_1 {

@@ -17,7 +17,8 @@ import android.widget.TextView;
 import com.iii.pos.R;
 import com.iii.pos.adapter.Adapter_List_Dishes;
 import com.iii.pos.adapter.Adapter_list_Category;
-import com.iii.pos.model.AdapterThuan;
+import com.iii.pos.model.Detail_Category;
+import com.iii.pos.model.Detail_Items;
 
 
 //-----------add to right menu on main activity--------//

@@ -14,6 +14,7 @@ import android.widget.ListView;
 
 import com.iii.pos.R;
 import com.iii.pos.adapter.AdapterListInvoice;
+import com.iii.pos.model.Invoice_Detail;
 
 public class InvoicePos extends Fragment {
 	private ListView invoiceList;

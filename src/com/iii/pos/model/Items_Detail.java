@@ -1,4 +1,4 @@
-package com.iii.pos.item;
+package com.iii.pos.model;
 
 import java.util.ArrayList;
 

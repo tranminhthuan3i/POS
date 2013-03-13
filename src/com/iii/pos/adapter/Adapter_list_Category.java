@@ -10,7 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.iii.pos.R;
-import com.iii.pos.item.Detail_Category;
+import com.iii.pos.model.Detail_Category;
 
 public class Adapter_list_Category extends ArrayAdapter<Detail_Category> {
 
