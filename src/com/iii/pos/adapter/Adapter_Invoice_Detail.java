@@ -13,16 +13,16 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.iii.pos.R;
-import com.iii.pos.model.Invoice_Detail_1;
+import com.iii.pos.model.Invoice_Detail;
 
-public class Adapter_Invoice_Detail extends ArrayAdapter<Invoice_Detail_1> {
+public class Adapter_Invoice_Detail extends ArrayAdapter<Invoice_Detail> {
 
 	private Context context;
-	private ArrayList<Invoice_Detail_1> invoicelist;
+	private ArrayList<Invoice_Detail> invoicelist;
 	private int count = 0;
 
 	public Adapter_Invoice_Detail(Context context, int textViewResourceId,
-			ArrayList<Invoice_Detail_1> invoicelist) {
+			ArrayList<Invoice_Detail> invoicelist) {
 		super(context, textViewResourceId, invoicelist);
 		this.context = context;
 		this.invoicelist = invoicelist;
@@ -42,7 +42,7 @@ public class Adapter_Invoice_Detail extends ArrayAdapter<Invoice_Detail_1> {
 						.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 				item = inflate.inflate(R.layout.temp_listinvoice, null);
 			}
-			final Invoice_Detail_1 invoicedetail = invoicelist.get(position);
+			final Invoice_Detail invoicedetail = invoicelist.get(position);
 
 			// count++;
 			// countCost++;

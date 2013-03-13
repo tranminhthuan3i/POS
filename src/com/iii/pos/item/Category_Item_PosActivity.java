@@ -17,18 +17,18 @@ import android.widget.TextView;
 import com.iii.pos.R;
 import com.iii.pos.adapter.Adapter_List_Dishes;
 import com.iii.pos.adapter.Adapter_list_Category;
-import com.iii.pos.model.Detail_Category;
-import com.iii.pos.model.Detail_Items;
+import com.iii.pos.model.Category;
+import com.iii.pos.model.Items;
 
 
 //-----------add to right menu on main activity--------//
 public class Category_Item_PosActivity extends Fragment {
 
 	private ListView lv;
-	private ArrayList<Detail_Category> arr;
+	private ArrayList<Category> arr;
 	private Adapter_list_Category adb;
 
-	private ArrayList<Detail_Items> arr1;
+	private ArrayList<Items> arr1;
 	private Adapter_List_Dishes adb1;
 	private TextView tvtitle;
 	private ImageButton imbuttom;
@@ -87,32 +87,32 @@ public class Category_Item_PosActivity extends Fragment {
 	}
 
 	private void loadCategoryInfo() {
-		Detail_Category cate1 = new Detail_Category();
+		Category cate1 = new Category();
 		cate1.setName("Các MónLẩu");
 		cate1.setDescription("Miền Bắc, Miền Trung, Miền Nam");
 		cate1.setCtegory_id(1);
-		Detail_Category cate2 = new Detail_Category();
+		Category cate2 = new Category();
 		cate2.setName("Các Món Nhậu");
 		cate2.setDescription("Miền Bắc, Miền Trung, Miền Nam");
 		cate2.setCtegory_id(2);
-		Detail_Category cate3 = new Detail_Category();
+		Category cate3 = new Category();
 		cate3.setName("Các Món Súp");
 		cate3.setDescription("Miền Bắc, Miền Trung, Miền Nam");
 		cate3.setCtegory_id(3);
-		Detail_Category cate4 = new Detail_Category();
+		Category cate4 = new Category();
 		cate4.setName("Các Món Vịt");
 		cate4.setDescription("Miền Bắc, Miền Trung, Miền Nam");
 		cate4.setCtegory_id(4);
-		Detail_Category cate5 = new Detail_Category();
+		Category cate5 = new Category();
 		cate5.setName("Các Món Thịt Chó");
 		cate5.setDescription("Miền Bắc, Miền Trung, Miền Nam");
 		cate5.setCtegory_id(5);
-		Detail_Category cate6 = new Detail_Category();
+		Category cate6 = new Category();
 		cate6.setName("Các Món Thịt Trâu");
 		cate6.setDescription("Miền Bắc, Miền Trung, Miền Nam");
 		cate6.setCtegory_id(6);
 
-		arr = new ArrayList<Detail_Category>();
+		arr = new ArrayList<Category>();
 		arr.add(cate1);
 		arr.add(cate2);
 		arr.add(cate3);
@@ -128,24 +128,24 @@ public class Category_Item_PosActivity extends Fragment {
 
 	private void loadItemInfo(int cate_id) {
 
-		Detail_Items item1 = new Detail_Items();
+		Items item1 = new Items();
 		item1.setName("Súp Gà");
 		item1.setPrice(123);
 		item1.setDescription("Súp gà là món ăn bổ dưỡng thơm ngon");
-		Detail_Items item2 = new Detail_Items();
+		Items item2 = new Items();
 		item2.setName("Cá Kho");
 		item2.setPrice(42);
 		item2.setDescription("Cá kho ngon ngọt tự nhiên với hương vị cá đồng");
-		Detail_Items item3 = new Detail_Items();
+		Items item3 = new Items();
 		item3.setName("Canh rau Muống");
 		item3.setPrice(63);
 		item3.setDescription("Rau Muống là món ăn dân tộc có hương vị của quê hương..");
-		Detail_Items item4 = new Detail_Items();
+		Items item4 = new Items();
 		item4.setName("Lẩu Mắm");
 		item4.setPrice(23);
 		item4.setDescription("Lẩu mắm có hương vị đậm đà của miền sông nước");
 
-		arr1 = new ArrayList<Detail_Items>();
+		arr1 = new ArrayList<Items>();
 		arr1.add(item1);
 		arr1.add(item2);
 		arr1.add(item3);

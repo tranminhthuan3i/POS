@@ -10,15 +10,15 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.iii.pos.R;
-import com.iii.pos.model.Detail_Category;
+import com.iii.pos.model.Category;
 
-public class Adapter_list_Category extends ArrayAdapter<Detail_Category> {
+public class Adapter_list_Category extends ArrayAdapter<Category> {
 
-	private ArrayList<Detail_Category> categorylist;
+	private ArrayList<Category> categorylist;
 	private Context context;
 
 	public Adapter_list_Category(Context context, int textViewResourceId,
-			ArrayList<Detail_Category> category) {
+			ArrayList<Category> category) {
 		super(context, textViewResourceId, category);
 		this.context = context;
 		this.categorylist = category;
@@ -34,7 +34,7 @@ public class Adapter_list_Category extends ArrayAdapter<Detail_Category> {
 					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			item = inflate.inflate(R.layout.temp_listcategory, null);
 		}
-		final Detail_Category itemdetail = categorylist.get(position);
+		final Category itemdetail = categorylist.get(position);
 		if (categorylist != null) {
 
 			TextView tvName = (TextView) item.findViewById(R.id.tvNameCategory);

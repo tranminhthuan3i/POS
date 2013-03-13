@@ -1,7 +1,7 @@
 package com.iii.pos.model;
 
 //----model category object----//
-public class Detail_Category {
+public class Category {
 	private int ctegory_id;
 	private String name;
 	private int media_id;

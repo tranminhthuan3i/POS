@@ -19,18 +19,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.iii.pos.R;
-import com.iii.pos.model.Detail_Items;
+import com.iii.pos.model.Items;
 
-public class Adapter_List_Dishes extends ArrayAdapter<Detail_Items> implements
+public class Adapter_List_Dishes extends ArrayAdapter<Items> implements
 		TextWatcher {
 
 	Context context;
-	List<Detail_Items> itemlist;
+	List<Items> itemlist;
 
 	int pos;
 
 	public Adapter_List_Dishes(Context context, int textViewResourceId,
-			List<Detail_Items> objects) {
+			List<Items> objects) {
 		super(context, textViewResourceId, objects);
 		this.itemlist = objects;
 		this.context = context;
@@ -51,7 +51,7 @@ public class Adapter_List_Dishes extends ArrayAdapter<Detail_Items> implements
 						.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 				item = inflate.inflate(R.layout.temp_listitem, null);
 			}
-			final Detail_Items itemdetail = itemlist.get(position);
+			final Items itemdetail = itemlist.get(position);
 			if (itemdetail != null) {
 				TextView tvName = (TextView) item.findViewById(R.id.tvNameItem);
 				TextView tvDetail = (TextView) item

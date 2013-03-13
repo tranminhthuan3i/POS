@@ -1,7 +1,7 @@
 package com.iii.pos.model;
 
 //----model item object----//
-public class Detail_Items {
+public class Items {
 
 	private int item_id;
 	private String name;

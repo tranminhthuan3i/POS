@@ -18,23 +18,23 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.iii.pos.R;
-import com.iii.pos.model.Invoice_Detail;
+import com.iii.pos.model.Invoice;
 
 //-----------custom the listview-------------------//
-public class AdapterListInvoice extends ArrayAdapter<Invoice_Detail> {
+public class AdapterListInvoice extends ArrayAdapter<Invoice> {
 
 	// ----------------Fields ----------------------------------//
 	private Context context;
-	private ArrayList<Invoice_Detail> invoiceitemlist;
+	private ArrayList<Invoice> invoiceitemlist;
 	private List<String> li;
 	private ArrayAdapter<String> arradapter;
 
 	// ---------------Constructor-------------------------------//
 	public AdapterListInvoice(Context context, int textViewResourceId,
-			List<Invoice_Detail> objects) {
+			List<Invoice> objects) {
 		super(context, textViewResourceId, objects);
 		// TODO Auto-generated constructor stub
-		this.invoiceitemlist = (ArrayList<Invoice_Detail>) objects;
+		this.invoiceitemlist = (ArrayList<Invoice>) objects;
 		this.context = context;
 	}
 
@@ -49,7 +49,7 @@ public class AdapterListInvoice extends ArrayAdapter<Invoice_Detail> {
 				invoiceItem = inflate.inflate(R.layout.invoice_custom_listview,
 						null);
 			}
-			final Invoice_Detail invoiceItemdetail = invoiceitemlist
+			final Invoice invoiceItemdetail = invoiceitemlist
 					.get(position);
 			if (invoiceItemdetail != null) {
 				TextView index = (TextView) invoiceItem
