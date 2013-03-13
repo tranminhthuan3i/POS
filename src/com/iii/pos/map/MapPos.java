@@ -65,14 +65,14 @@ public class MapPos extends Fragment {
 			switch (key) {
 			case R.id.btnFloor1:
 
-				mapFloorFragemnt = new Floor1();
-
-				break;
-			case R.id.btnFloor2:
+				
 				mapFloorFragemnt = new Floor2();
 				break;
+			case R.id.btnFloor2:
+				mapFloorFragemnt = new Floor1();
+				break;
 			case R.id.btnFloor3:
-
+				mapFloorFragemnt = new Floor3();
 				break;
 			case R.id.btnFloor4:
 
