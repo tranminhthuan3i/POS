@@ -16,20 +16,24 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.iii.pos.R;
+import com.iii.pos.category_item.Category_Item_PosActivity;
 import com.iii.pos.common.Header_Pos;
 import com.iii.pos.config.ConfigurationWS;
 import com.iii.pos.invoice.InvoicePos;
 import com.iii.pos.invoice.Invoice_Detail_PosActivity;
-import com.iii.pos.item.Category_Item_PosActivity;
 import com.iii.pos.map.MapFragment;
 import com.iii.pos.map.MapPos;
 import com.iii.pos.model.User;
@@ -44,6 +48,7 @@ public class MainPosActivity extends FragmentActivity implements
 	private int exit = 0;
 	private Dialog dialog;
 	private User user;
+	private CheckBox cbShowPassword, cbSavePass;
 
 	// -----------------initialize--------------------------//
 	@Override
@@ -76,7 +81,7 @@ public class MainPosActivity extends FragmentActivity implements
 		Bundle extras = getIntent().getExtras();
 		if (extras == null) {
 			login_out(this);
-		} 
+		}
 		/*
 		 * else { String language = extras.getString("KEY"); key =
 		 * Integer.parseInt(language); System.out.println(key + "<--KEY"); }
@@ -209,17 +214,34 @@ public class MainPosActivity extends FragmentActivity implements
 		dialog.setTitle("User Login");
 		dialog.setContentView(R.layout.login_pos);
 		dialog.setCancelable(false);
+		final EditText epass = (EditText) dialog.findViewById(R.id.loginpass);
+		final EditText ename = (EditText) dialog.findViewById(R.id.loginusername);
+		cbShowPassword = (CheckBox) dialog.findViewById(R.id.ShowThePassWord);
+		//---------------show password--------------------------//
+		cbShowPassword
+				.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+					@Override
+					public void onCheckedChanged(CompoundButton buttonView,
+							boolean isChecked) {
+						if (!isChecked) {
+							epass.setTransformationMethod(PasswordTransformationMethod
+									.getInstance());
+						} else {
+							epass.setTransformationMethod(HideReturnsTransformationMethod
+									.getInstance());
+						}
+					}
+				});
 		Button btnLogin = (Button) dialog.findViewById(R.id.btnLogin);
 		btnLogin.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				EditText ename = (EditText) dialog
-						.findViewById(R.id.loginusername);
+
 				final String username = ename.getText().toString();
 
-				EditText epass = (EditText) dialog.findViewById(R.id.loginpass);
 				final String pass = epass.getText().toString();
 
 				if (putDataLogin(username, pass)) {

@@ -1,4 +1,4 @@
-package com.iii.pos.item;
+package com.iii.pos.category_item;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -71,8 +71,7 @@ public class Category_Item_PosActivity extends Fragment {
 				container, false);
 		url_all_categories = getResources().getString(R.string.wsgetcategrory);
 		url_all_items = getResources().getString(R.string.wsgetitems);
-		
-		
+
 		try {
 
 			imbuttom = (ImageButton) categoryLayout.findViewById(R.id.btnback);
@@ -154,9 +153,11 @@ public class Category_Item_PosActivity extends Fragment {
 		// arr.add(cate5);
 		// arr.add(cate6);
 
-		adb = new Adapter_list_Category(getActivity().getApplicationContext(),
-				R.layout.category_item, arr);
-		lv.setAdapter(adb);
+		if (arr != null) {
+			adb = new Adapter_list_Category(getActivity()
+					.getApplicationContext(), R.layout.category_item, arr);
+			lv.setAdapter(adb);
+		}
 
 	}
 
@@ -183,9 +184,11 @@ public class Category_Item_PosActivity extends Fragment {
 		// arr1.add(item2);
 		// arr1.add(item3);
 		// arr1.add(item4);
-		adb1 = new Adapter_List_Dishes(getActivity(), R.layout.category_item,
-				arr1);
-		lv.setAdapter(adb1);
+		if (arr1 != null) {
+			adb1 = new Adapter_List_Dishes(getActivity(),
+					R.layout.category_item, arr1);
+			lv.setAdapter(adb1);
+		}
 	}
 
 	/**
@@ -200,6 +203,8 @@ public class Category_Item_PosActivity extends Fragment {
 		protected void onPreExecute() {
 			super.onPreExecute();
 			arr = new ArrayList<Category>();
+			Log.d("THUAN",
+					"VAO THANG DOINBACKGROUND)))))))))))))))))))))))))))))))))))))))))))");
 			// pDialog = new
 			// ProgressDialog(getActivity().getApplicationContext());
 			// pDialog.setMessage("Loading categories. Please wait...");
@@ -214,62 +219,65 @@ public class Category_Item_PosActivity extends Fragment {
 		protected String doInBackground(String... args) {
 			// Building Parameters
 			List<NameValuePair> params = new ArrayList<NameValuePair>();
+
 			// getting JSON string from URL
-			JSONObject json = jParser.makeHttpRequest(url_all_categories,
-					"GET", params);
-			Log.d("THUAN",
-					"VAO THANG DOINBACKGROUND)))))))))))))))))))))))))))))))))))))))))))");
-			
-			int index = 1;
-			// Check your log cat for JSON reponse
-			Log.d("All categories: ", json.toString());
-
 			try {
-				// Checking for SUCCESS TAG
-				int success = json.getInt(TAG_SUCCESS);
 
-				if (success == 1) {
-					// categories found
-					// Getting Array of categories
-					categories = json.getJSONArray(TAG_CATEGORIES);
+				JSONObject json = jParser.makeHttpRequest(url_all_categories,
+						"GET", params);
 
-					// looping through All categories
-					for (int i = 0; i < categories.length(); i++) {
-						JSONObject c = categories.getJSONObject(i);
+				int index = 1;
+				// Check your log cat for JSON reponse
+				Log.d("All categories: ", json.toString());
+				try {
+					// Checking for SUCCESS TAG
+					int success = json.getInt(TAG_SUCCESS);
 
-						// Storing each json item in variable
-						String category_id = c.getString(TAG_CID);
-						String name = c.getString(TAG_NAME);
-						String description = c.getString("description");
+					if (success == 1) {
+						// categories found
+						// Getting Array of categories
+						categories = json.getJSONArray(TAG_CATEGORIES);
 
-						// creating new HashMap
-						HashMap<String, String> map = new HashMap<String, String>();
+						// looping through All categories
+						for (int i = 0; i < categories.length(); i++) {
+							JSONObject c = categories.getJSONObject(i);
 
-						// adding each child node to HashMap key => value
-						Category cate = new Category();
-						cate.setName(name);
-						cate.setDescription(description);
-						cate.setCtegory_id(Integer.parseInt(category_id));
+							// Storing each json item in variable
+							String category_id = c.getString(TAG_CID);
+							String name = c.getString(TAG_NAME);
+							String description = c.getString("description");
 
-						System.out.println(cate.getName() + "    "
-								+ cate.getDescription() + "    "
-								+ cate.getCtegory_id());
-						arr.add(cate);
-						// adding HashList to ArrayList
-						// categoriesList.add(map);
+							// creating new HashMap
+							HashMap<String, String> map = new HashMap<String, String>();
+
+							// adding each child node to HashMap key => value
+							Category cate = new Category();
+							cate.setName(name);
+							cate.setDescription(description);
+							cate.setCtegory_id(Integer.parseInt(category_id));
+
+							System.out.println(cate.getName() + "    "
+									+ cate.getDescription() + "    "
+									+ cate.getCtegory_id());
+							arr.add(cate);
+							// adding HashList to ArrayList
+							// categoriesList.add(map);
+						}
+					} else {
+						// no products found
+						// Launch Add New product Activity
+						// ---Intent i = new Intent(getApplicationContext(),
+						// --- NewProductActivity.class);
+						// --- Closing all previous activities
+						// ---i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+						// ---startActivity(i);
+
 					}
-				} else {
-					// no products found
-					// Launch Add New product Activity
-					// ---Intent i = new Intent(getApplicationContext(),
-					// --- NewProductActivity.class);
-					// --- Closing all previous activities
-					// ---i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-					// ---startActivity(i);
-
+				} catch (JSONException e) {
+					e.printStackTrace();
 				}
-			} catch (JSONException e) {
-				e.printStackTrace();
+			} catch (Exception e) {
+
 			}
 
 			return null;
@@ -306,7 +314,8 @@ public class Category_Item_PosActivity extends Fragment {
 		private int category_id;
 
 		public LoadAllItems(int category_id) {
-			System.out.println("000000000000000000000000000000000:  "+this.category_id);
+			System.out.println("000000000000000000000000000000000:  "
+					+ this.category_id);
 			this.category_id = category_id;
 		}
 
@@ -329,59 +338,62 @@ public class Category_Item_PosActivity extends Fragment {
 			// Building Parameters
 			List<NameValuePair> params = new ArrayList<NameValuePair>();
 			// getting JSON string from URL
-			JSONObject json = jParserItem.makeHttpRequest(url_all_items, "GET",
-					params);
-			
-
-			int index = 1;
-			// Check your log cat for JSON reponse
-			Log.d("All items: ", json.toString());
-
 			try {
-				// Checking for SUCCESS TAG
-				int success = json.getInt(TAG_SUCCESS);
+				JSONObject json = jParserItem.makeHttpRequest(url_all_items,
+						"GET", params);
 
-				if (success == 1) {
-					// categories found
-					// Getting Array of categories
-					items = json.getJSONArray(TAG_ITEMS);
+				int index = 1;
+				// Check your log cat for JSON reponse
+				Log.d("All items: ", json.toString());
 
-					// looping through All categories
-					for (int i = 0; i < items.length(); i++) {
-						JSONObject c = items.getJSONObject(i);
+				try {
+					// Checking for SUCCESS TAG
+					int success = json.getInt(TAG_SUCCESS);
 
-						// Storing each json item in variable
-						//String item_id = c.getString(TAG_IID);
-						String name = c.getString(TAG_NAME);
-						String description = c.getString("description");
-						//String price = c.getString("price");
-						Items item = new Items();
-						item.setName(name);
-						item.setDescription(description);
-						item.setPrice(20);
-						//item.setItem_id(Integer.parseInt(item_id));
+					if (success == 1) {
+						// categories found
+						// Getting Array of categories
+						items = json.getJSONArray(TAG_ITEMS);
 
-						System.out.println(item.getName() + "    "
-								+ item.getDescription() + "    "
-								+ item.getItem_id());
-						arr1.add(item);
-						// adding HashList to ArrayList
-						// categoriesList.add(map);
+						// looping through All categories
+						for (int i = 0; i < items.length(); i++) {
+							JSONObject c = items.getJSONObject(i);
+
+							// Storing each json item in variable
+							// String item_id = c.getString(TAG_IID);
+							String name = c.getString(TAG_NAME);
+							String description = c.getString("description");
+							// String price = c.getString("price");
+							Items item = new Items();
+							item.setName(name);
+							item.setDescription(description);
+							item.setPrice(20);
+							// item.setItem_id(Integer.parseInt(item_id));
+
+							System.out.println(item.getName() + "    "
+									+ item.getDescription() + "    "
+									+ item.getItem_id());
+							arr1.add(item);
+							// adding HashList to ArrayList
+							// categoriesList.add(map);
+						}
+					} else {
+						// no products found
+						// Launch Add New product Activity
+						// ---Intent i = new Intent(getApplicationContext(),
+						// --- NewProductActivity.class);
+						// --- Closing all previous activities
+						// ---i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+						// ---startActivity(i);
+
 					}
-				} else {
-					// no products found
-					// Launch Add New product Activity
-					// ---Intent i = new Intent(getApplicationContext(),
-					// --- NewProductActivity.class);
-					// --- Closing all previous activities
-					// ---i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-					// ---startActivity(i);
-
+				} catch (JSONException e) {
+					e.printStackTrace();
 				}
-			} catch (JSONException e) {
-				e.printStackTrace();
-			}
 
+			} catch (Exception ee) {
+
+			}
 			return null;
 		}
 
