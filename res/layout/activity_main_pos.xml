@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="100" >
+
+    <!-- Body layout amount 95% -->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,7 +14,7 @@
         android:background="@android:color/darker_gray"
         android:orientation="horizontal"
         android:weightSum="100" >
-
+  		<!-- Left layout amount 70% -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -22,37 +23,44 @@
             android:orientation="vertical"
             android:weightSum="100" >
 
+            <!-- Header is menu layout 10%  -->
             <fragment
                 android:id="@+id/headerMenuFragment"
                 android:name="com.iii.pos.common.Header_Pos"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="90" />
+			<!-- Header is menu layout 90%  -->
             <LinearLayout
                 android:id="@+id/body_Pos_Container"
                 android:layout_width="match_parent"
-                android:background="@android:color/holo_orange_light"
                 android:layout_height="match_parent"
-                android:layout_weight="10" />
+                android:layout_weight="10"
+                android:background="@android:color/holo_orange_light" />
         </LinearLayout>
+
+        <!-- Right layout (category, items) 30% -->
 
         <LinearLayout
             android:id="@+id/category_container"
             android:layout_width="match_parent"
-            android:paddingRight="10dip"
             android:layout_height="match_parent"
-            android:layout_weight="70" />
+            android:layout_weight="70"
+            android:paddingRight="5dip" />
     </LinearLayout>
+
+    <!-- footer layout amout 5% -->
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="95"
         android:orientation="horizontal" >
+
         <fragment
             android:id="@+id/footer_Pos_Fragment"
-            android:layout_width="match_parent"
             android:name="com.iii.pos.common.Footer_Pos"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="70" />
     </LinearLayout>

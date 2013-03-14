@@ -18,12 +18,12 @@
 
         <Button
             android:id="@+id/btnFloor1"
-            android:layout_width="76dp"
+            android:layout_width="80dp"
             android:layout_height="45dip"
             android:layout_gravity="center"
             android:layout_marginBottom="10dip"
             android:layout_marginTop="10dip"
-            android:background="@drawable/buttonbackground"
+            android:background="@drawable/login_loginbutton"
             android:minWidth="100sp"
             android:onClick="menuButtonClick"
             android:text="@string/floor1"
@@ -31,11 +31,11 @@
 
         <Button
             android:id="@+id/btnFloor2"
-            android:layout_width="76dp"
+            android:layout_width="80dp"
             android:layout_height="45dip"
             android:layout_gravity="center"
             android:layout_marginBottom="10dip"
-            android:background="@drawable/buttonbackground"
+            android:background="@drawable/login_loginbutton"
             android:minWidth="100sp"
             android:onClick="menuButtonClick"
             android:text="@string/floor2"
@@ -43,11 +43,11 @@
 
         <Button
             android:id="@+id/btnFloor3"
-            android:layout_width="76dp"
+            android:layout_width="80dp"
             android:layout_height="45dip"
             android:layout_gravity="center"
             android:layout_marginBottom="10dip"
-            android:background="@drawable/buttonbackground"
+            android:background="@drawable/login_loginbutton"
             android:minWidth="100sp"
             android:onClick="menuButtonClick"
             android:text="@string/floor3"
@@ -55,11 +55,11 @@
 
         <Button
             android:id="@+id/btnFloor4"
-            android:layout_width="76dp"
+            android:layout_width="80dp"
             android:layout_height="45dip"
             android:layout_gravity="center"
             android:layout_marginBottom="10dip"
-            android:background="@drawable/buttonbackground"
+            android:background="@drawable/login_loginbutton"
             android:minWidth="100sp"
             android:onClick="menuButtonClick"
             android:text="@string/floor4"

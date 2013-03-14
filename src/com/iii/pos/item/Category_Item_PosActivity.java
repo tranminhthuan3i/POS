@@ -19,9 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
-import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import com.iii.pos.R;
@@ -73,8 +71,8 @@ public class Category_Item_PosActivity extends Fragment {
 				container, false);
 		url_all_categories = getResources().getString(R.string.wsgetcategrory);
 		url_all_items = getResources().getString(R.string.wsgetitems);
-		arr = new ArrayList<Category>();
-		arr1 = new ArrayList<Items>();
+		
+		
 		try {
 
 			imbuttom = (ImageButton) categoryLayout.findViewById(R.id.btnback);
@@ -201,7 +199,7 @@ public class Category_Item_PosActivity extends Fragment {
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			Log.d("THUAN", "LOAD ALLL PRODUCE");
+			arr = new ArrayList<Category>();
 			// pDialog = new
 			// ProgressDialog(getActivity().getApplicationContext());
 			// pDialog.setMessage("Loading categories. Please wait...");
@@ -221,7 +219,7 @@ public class Category_Item_PosActivity extends Fragment {
 					"GET", params);
 			Log.d("THUAN",
 					"VAO THANG DOINBACKGROUND)))))))))))))))))))))))))))))))))))))))))))");
-			Category cate = new Category();
+			
 			int index = 1;
 			// Check your log cat for JSON reponse
 			Log.d("All categories: ", json.toString());
@@ -248,8 +246,7 @@ public class Category_Item_PosActivity extends Fragment {
 						HashMap<String, String> map = new HashMap<String, String>();
 
 						// adding each child node to HashMap key => value
-						map.put(TAG_CID, category_id);
-						map.put(TAG_NAME, name);
+						Category cate = new Category();
 						cate.setName(name);
 						cate.setDescription(description);
 						cate.setCtegory_id(Integer.parseInt(category_id));
@@ -316,7 +313,7 @@ public class Category_Item_PosActivity extends Fragment {
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			Log.d("THUAN", "LOAD ALLL PRODUCE");
+			arr1 = new ArrayList<Items>();
 			// pDialog = new
 			// ProgressDialog(getActivity().getApplicationContext());
 			// pDialog.setMessage("Loading categories. Please wait...");
@@ -334,7 +331,7 @@ public class Category_Item_PosActivity extends Fragment {
 			// getting JSON string from URL
 			JSONObject json = jParserItem.makeHttpRequest(url_all_items, "GET",
 					params);
-			Items item = new Items();
+			
 
 			int index = 1;
 			// Check your log cat for JSON reponse
@@ -358,6 +355,7 @@ public class Category_Item_PosActivity extends Fragment {
 						String name = c.getString(TAG_NAME);
 						String description = c.getString("description");
 						//String price = c.getString("price");
+						Items item = new Items();
 						item.setName(name);
 						item.setDescription(description);
 						item.setPrice(20);

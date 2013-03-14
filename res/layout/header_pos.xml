@@ -2,14 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
+    android:background="@android:color/black"
     android:orientation="horizontal"
     android:weightSum="100" >
 
     <Button
         android:id="@+id/btnMap"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_gravity="right"
         android:layout_weight="20"
         android:drawableLeft="@drawable/menu_icon_map"
@@ -21,7 +21,7 @@
     <Button
         android:id="@+id/btnInvoice"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_gravity="right"
         android:layout_weight="20"
         android:drawableLeft="@drawable/menu_icon_invoice"
@@ -33,7 +33,7 @@
     <Button
         android:id="@+id/btnSetting"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_gravity="right"
         android:layout_weight="20"
         android:drawableLeft="@drawable/menu_icon_setting"
@@ -45,10 +45,10 @@
     <Button
         android:id="@+id/btnTrackingMap"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_gravity="right"
         android:layout_weight="20"
-        android:drawableLeft="@drawable/menu_icon_setting"
+        android:drawableLeft="@drawable/menu_icon_google"
         android:minWidth="100sp"
         android:onClick="menuButtonClick"
         android:text="@string/strackingmap"
@@ -57,7 +57,7 @@
     <Button
         android:id="@+id/btnLogin_Out"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_gravity="right"
         android:layout_weight="20"
         android:drawableLeft="@drawable/menu_icon_login"
