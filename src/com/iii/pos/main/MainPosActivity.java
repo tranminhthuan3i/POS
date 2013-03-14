@@ -16,6 +16,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -31,6 +32,7 @@ import com.iii.pos.invoice.Invoice_Detail_PosActivity;
 import com.iii.pos.item.Category_Item_PosActivity;
 import com.iii.pos.map.MapFragment;
 import com.iii.pos.map.MapPos;
+import com.iii.pos.model.User;
 
 public class MainPosActivity extends FragmentActivity implements
 		Header_Pos.OnHeaderSelectedListener {
@@ -41,6 +43,7 @@ public class MainPosActivity extends FragmentActivity implements
 	private View footer = null;
 	private int exit = 0;
 	private Dialog dialog;
+	private User user;
 
 	// -----------------initialize--------------------------//
 	@Override
@@ -50,14 +53,13 @@ public class MainPosActivity extends FragmentActivity implements
 
 		// ------------------creating the ws------------------------//
 		mWS = new ConfigurationWS(this);
-		URL = getResources().getString(R.string.loginWS);
-
+		URL = getResources().getString(R.string.wslogin);
+		user = new User();
 		footer = (View) findViewById(R.id.footer_Pos_Fragment);
 
 		// Create new transaction
 		FragmentManager fragmentManager = getSupportFragmentManager();
 		fragmentManager.popBackStack();
-
 		FragmentTransaction fragmentTransaction = fragmentManager
 				.beginTransaction();
 		MapPos mapPos = new MapPos();
@@ -68,7 +70,19 @@ public class MainPosActivity extends FragmentActivity implements
 		fragmentTransaction.addToBackStack(null);
 		// Commit the transaction
 		fragmentTransaction.commit();
-		login_out(this);
+
+		// ------------------ get KEY for selected the language-----0//
+		// -------------------Login out start first------------------//
+		Bundle extras = getIntent().getExtras();
+		if (extras == null) {
+			login_out(this);
+		} 
+		/*
+		 * else { String language = extras.getString("KEY"); key =
+		 * Integer.parseInt(language); System.out.println(key + "<--KEY"); }
+		 */
+
+		/*--------------------policy for connect to ws-------------*/
 		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
 				.permitAll().build();
 		StrictMode.setThreadPolicy(policy);
@@ -228,6 +242,10 @@ public class MainPosActivity extends FragmentActivity implements
 					footerText.setText("USER: " + username.toUpperCase()
 							+ "--- LOGIN TIME: "
 							+ currentDateTimeString.toUpperCase());
+					// set to User
+					user.setUsername(username);
+					user.setPassword(pass);
+
 					dialog.dismiss();
 
 				} else
@@ -263,7 +281,10 @@ public class MainPosActivity extends FragmentActivity implements
 	@Override
 	public void updateLanguage(String languageKey, View view) {
 		// TODO Auto-generated method stub
+		Bundle bl = new Bundle();
+		bl.putString("KEY", languageKey);
 		Intent t = new Intent(this, MainPosActivity.class);
+		t.putExtras(bl);
 		startActivity(t);
 		this.finish();
 	}

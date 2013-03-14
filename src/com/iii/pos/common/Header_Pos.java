@@ -320,7 +320,7 @@ public class Header_Pos extends Fragment {
 		dialog.show();
 	}
 
-	private String[] languages = { "French", "English" };
+	private String[] languages = { "English", "Vietnam" };
 
 	private void createDialogSettingLanguage() {
 		final Dialog dialog = new Dialog(getActivity());
