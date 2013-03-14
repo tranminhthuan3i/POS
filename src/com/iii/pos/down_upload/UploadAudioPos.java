@@ -16,14 +16,14 @@ import android.util.Log;
 
 import com.iii.pos.R;
 
-public class UploadAudioIrocchi {
+public class UploadAudioPos {
 
 	private static final int SELECT_AUDIO = 2;
 	String selectedPath = "";
 	private static final String AUDIO_RECORDER_FOLDER1 = "Irocchi/Audios/local";
 	private Context mContext = null;
 
-	public UploadAudioIrocchi(Context mcontext) {
+	public UploadAudioPos(Context mcontext) {
 		this.mContext = mcontext;
 	}
 

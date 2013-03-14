@@ -10,6 +10,7 @@ import org.json.JSONObject;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v4.app.Fragment;
@@ -18,6 +19,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -30,6 +32,7 @@ import android.widget.Toast;
 
 import com.iii.pos.R;
 import com.iii.pos.category_item.Category_Item_PosActivity;
+import com.iii.pos.common.Cache;
 import com.iii.pos.common.Header_Pos;
 import com.iii.pos.config.ConfigurationWS;
 import com.iii.pos.invoice.InvoicePos;
@@ -41,6 +44,8 @@ import com.iii.pos.model.User;
 public class MainPosActivity extends FragmentActivity implements
 		Header_Pos.OnHeaderSelectedListener {
 
+	private static final String UserNameKey = "_UserName";
+	private static final String PassWordKey = "_PassWord";
 	// --------------------Fields-----------------------------//
 	private ConfigurationWS mWS;
 	private String URL = "";
@@ -49,6 +54,10 @@ public class MainPosActivity extends FragmentActivity implements
 	private Dialog dialog;
 	private User user;
 	private CheckBox cbShowPassword, cbSavePass;
+
+	private String prefName = "SavePassWordCheck";
+	protected static final String Save_Password_Key = "SavePass";
+	private SharedPreferences shPref;
 
 	// -----------------initialize--------------------------//
 	@Override
@@ -215,9 +224,15 @@ public class MainPosActivity extends FragmentActivity implements
 		dialog.setContentView(R.layout.login_pos);
 		dialog.setCancelable(false);
 		final EditText epass = (EditText) dialog.findViewById(R.id.loginpass);
-		final EditText ename = (EditText) dialog.findViewById(R.id.loginusername);
+		final EditText ename = (EditText) dialog
+				.findViewById(R.id.loginusername);
+		// ------------save pass----------------------//
+		final CheckBox cbSavePass = (CheckBox) dialog
+				.findViewById(R.id.Check_SaveUserPass);
+
 		cbShowPassword = (CheckBox) dialog.findViewById(R.id.ShowThePassWord);
-		//---------------show password--------------------------//
+
+		// ---------------show password--------------------------//
 		cbShowPassword
 				.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
@@ -243,7 +258,28 @@ public class MainPosActivity extends FragmentActivity implements
 				final String username = ename.getText().toString();
 
 				final String pass = epass.getText().toString();
+				try {
 
+					Log.d("ABC", "Bat dau");
+					shPref = getSharedPreferences(prefName, MODE_PRIVATE);
+					SharedPreferences.Editor editor = shPref.edit();
+					editor.putString(UserNameKey,
+							String.valueOf(ename.getText()).trim());
+					editor.putString(PassWordKey,
+							String.valueOf(epass.getText()).trim());
+					Log.d("ABC", "Da vao");
+					editor.putBoolean(Save_Password_Key, cbSavePass.isChecked());
+					editor.commit();
+					Cache.setCacheUserData(String.valueOf(ename.getText())
+							.trim());
+					Cache.setLoginState(true);
+				} catch (Exception e) {
+					Log.d("ABC", "loi roi");
+					SharedPreferences shPre = getSharedPreferences(prefName,
+							MODE_PRIVATE);
+					cbSavePass.setChecked(shPre.getBoolean(Save_Password_Key,
+							false));
+				}
 				if (putDataLogin(username, pass)) {
 					Toast.makeText(MainPosActivity.this, "Login success",
 							Toast.LENGTH_SHORT).show();
