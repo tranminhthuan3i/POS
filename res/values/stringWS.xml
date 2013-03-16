@@ -4,7 +4,7 @@
     <string name="wslogin">http://192.168.1.68/pos/wslogin.php</string>
     <string name="wsgetcategrory">http://192.168.1.68/pos/wsgetallcategories.php</string>
     <string name="wsgetitems">http://192.168.1.68/pos/wsgetallitems.php</string>
-    <string name="UploadAuDio">http://192.168.0.6/irocchi/upload_audio.php</string>
+    <string name="UploadAuDio">http://192.168.1.68/pos/upload_audio.php</string>
 	<string name="UploadImage">http://192.168.1.68/pos/upload_image.php</string>
-	
+	<string name="URLdownloading">http://192.168.1.68/pos/media/</string>
 </resources>

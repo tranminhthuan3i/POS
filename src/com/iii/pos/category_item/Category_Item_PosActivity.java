@@ -1,5 +1,6 @@
 package com.iii.pos.category_item;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -10,8 +11,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.ProgressDialog;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -26,6 +30,7 @@ import com.iii.pos.R;
 import com.iii.pos.adapter.Adapter_List_Dishes;
 import com.iii.pos.adapter.Adapter_list_Category;
 import com.iii.pos.config.JSONParser;
+import com.iii.pos.down_upload.FileDownloadThread;
 import com.iii.pos.model.Category;
 import com.iii.pos.model.Items;
 
@@ -39,7 +44,7 @@ public class Category_Item_PosActivity extends Fragment {
 	private static final String TAG_CID = "category_id";
 	private static final String TAG_IID = "item_id";
 	private static final String TAG_NAME = "name";
-
+	private static final String TAG_IMG_CATEGORY = "POS/Media/category";
 	// ---------------Fields------------------//
 	private ListView lv;
 	private ArrayList<Category> arr;
@@ -63,7 +68,8 @@ public class Category_Item_PosActivity extends Fragment {
 	// categories JSONArray
 	JSONArray categories = null;
 	JSONArray items = null;
-
+	private ArrayList<Bitmap> imgCategoryList = new ArrayList<Bitmap>();
+	private ArrayList<String> listimgname= new ArrayList<String>();
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -154,8 +160,10 @@ public class Category_Item_PosActivity extends Fragment {
 		// arr.add(cate6);
 
 		if (arr != null) {
+			
 			adb = new Adapter_list_Category(getActivity()
 					.getApplicationContext(), R.layout.category_item, arr);
+			adb.setImg_category(listimgname);
 			lv.setAdapter(adb);
 		}
 
@@ -191,6 +199,17 @@ public class Category_Item_PosActivity extends Fragment {
 		}
 	}
 
+	// download img from file name
+	private void downloadImageCategory(String filename) {
+		String urlDownload = getResources().getString(R.string.URLdownloading);
+		String filepath = Environment.getExternalStorageDirectory().getPath();
+		File file = new File(filepath, TAG_IMG_CATEGORY);
+		if (!file.exists()) {
+			file.mkdirs();
+		}
+		new FileDownloadThread(urlDownload + filename, file.getAbsolutePath());
+	}
+
 	/**
 	 * Background Async Task to Load all product by making HTTP Request
 	 * */
@@ -203,8 +222,6 @@ public class Category_Item_PosActivity extends Fragment {
 		protected void onPreExecute() {
 			super.onPreExecute();
 			arr = new ArrayList<Category>();
-			Log.d("THUAN",
-					"VAO THANG DOINBACKGROUND)))))))))))))))))))))))))))))))))))))))))))");
 			// pDialog = new
 			// ProgressDialog(getActivity().getApplicationContext());
 			// pDialog.setMessage("Loading categories. Please wait...");
@@ -247,6 +264,10 @@ public class Category_Item_PosActivity extends Fragment {
 							String name = c.getString(TAG_NAME);
 							String description = c.getString("description");
 
+							String img_category = c.getString("img_category");
+							listimgname.add(img_category);
+							// ------download image_category----//
+							downloadImageCategory(img_category + ".png");
 							// creating new HashMap
 							HashMap<String, String> map = new HashMap<String, String>();
 
@@ -418,5 +439,7 @@ public class Category_Item_PosActivity extends Fragment {
 
 		}
 	}
+
+	
 
 }
